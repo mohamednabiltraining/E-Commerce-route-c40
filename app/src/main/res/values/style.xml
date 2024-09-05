@@ -43,8 +43,6 @@
     //item home appliance style
     <style name="cv_home_appliance_style">
         <item name="cardCornerRadius">@dimen/_10sdp</item>
-        158dp
-        211dp
         <item name="android:layout_width">@dimen/_110sdp</item>
         <item name="android:layout_height">@dimen/_165sdp</item>
         <item name="android:gravity">center</item>
