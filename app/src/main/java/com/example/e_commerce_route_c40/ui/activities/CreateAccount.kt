@@ -3,12 +3,12 @@ package com.example.e_commerce_route_c40.ui.activities
 import android.os.Bundle
 import android.widget.Toast
 import com.example.e_commerce_route_c40.base.BaseActivity
-import com.example.e_commerce_route_c40.databinding.CreateAccPageBinding
+import com.example.e_commerce_route_c40.databinding.CreateAccountActivityBinding
 
-class CreateAcc : BaseActivity<CreateAccPageBinding>() {
+class CreateAccount : BaseActivity<CreateAccountActivityBinding>() {
 
-    override fun inflateBinding(): CreateAccPageBinding {
-        return CreateAccPageBinding.inflate(layoutInflater)
+    override fun inflateBinding(): CreateAccountActivityBinding {
+        return CreateAccountActivityBinding.inflate(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

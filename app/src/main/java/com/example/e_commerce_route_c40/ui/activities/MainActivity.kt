@@ -9,6 +9,7 @@ import com.example.e_commerce_route_c40.base.BaseActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
+
     override fun inflateBinding() = ActivityMainBinding.inflate(layoutInflater)
     // now you can use binding directly
 

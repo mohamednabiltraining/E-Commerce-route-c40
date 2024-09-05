@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.example.e_commerce_route_c40.ui.fragments.categoryFragment.CategoryFragment"
+        android:name="com.example.e_commerce_route_c40.ui.fragments.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
     <fragment
