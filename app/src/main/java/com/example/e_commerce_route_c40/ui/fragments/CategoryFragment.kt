@@ -1,4 +1,4 @@
-package com.example.e_commerce_route_c40.ui.fragments.categoryFragment
+package com.example.e_commerce_route_c40.ui.fragments
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

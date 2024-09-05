@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-CreateAccPageBindingimport com.example.e_commerce_route_c40.base.BaseFragment
+import com.example.e_commerce_route_c40.base.BaseFragment
+
 import com.example.e_commerce_route_c40.databinding.FragmentHomeBinding
 
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
-    private lateinit var offersAdapter: OffersAdapter
-    private lateinit var adapterCategories: AdapterCategories
-    private lateinit var adapterHomeAppliance: AdapterHomeAppliance
+//  //  private lateinit var offersAdapter: OffersAdapter
+//    private lateinit var adapterCategories: AdapterCategories
+//    private lateinit var adapterHomeAppliance: AdapterHomeAppliance
 
     override fun inflateBinding(
         inflater: LayoutInflater,

@@ -74,7 +74,6 @@
 
         <TextView
             android:id="@+id/tv_price"
-            style="@style/tv_review_count_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@id/tv_price_type"

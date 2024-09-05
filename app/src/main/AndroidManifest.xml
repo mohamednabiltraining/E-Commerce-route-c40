@@ -22,12 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".ui.activities.CreateAcc"
+            android:name=".ui.activities.CreateAccount"
             android:exported="false" />
+
         <activity
             android:name=".ui.activities.LoginScreen"
             android:exported="false" />
+
+
     </application>
 
 </manifest>

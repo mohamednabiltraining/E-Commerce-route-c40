@@ -30,7 +30,7 @@ class LoginScreen : BaseActivity<LoginPageBinding>() {
     }
 
     private fun createAccount() {
-        val intent = Intent(this, CreateAcc::class.java)
+        val intent = Intent(this, CreateAccount::class.java)
         startActivity(intent)
     }
 
