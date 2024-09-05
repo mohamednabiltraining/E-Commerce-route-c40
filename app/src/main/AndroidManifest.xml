@@ -23,6 +23,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.activities.MainActivity"
+            />
+
         <activity
             android:name=".ui.activities.CreateAccount"
             android:exported="false" />

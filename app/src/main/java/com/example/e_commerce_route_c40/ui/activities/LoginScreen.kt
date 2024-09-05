@@ -3,6 +3,8 @@ package com.example.e_commerce_route_c40.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.navigation.findNavController
+import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseActivity
 import com.example.e_commerce_route_c40.databinding.LoginPageBinding
 
@@ -20,7 +22,10 @@ class LoginScreen : BaseActivity<LoginPageBinding>() {
         }
 
         binding.buttonLogin.setOnClickListener {
-            logIntoAccount()
+           //  logIntoAccount()
+            // we will just navigate directly for test
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 
