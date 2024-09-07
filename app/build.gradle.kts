@@ -4,6 +4,8 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
     kotlin("kapt")
+    id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -49,6 +51,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(project(":domain"))
+    implementation(project(":data"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -57,16 +61,14 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-    // sdp
-    implementation(libs.sdp.android)
-
-    // ssp
-    implementation(libs.ssp.android)
-
     // Glide
     implementation(libs.glide)
 
     implementation (libs.circleimageview)
+
+    //    hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 
 
 

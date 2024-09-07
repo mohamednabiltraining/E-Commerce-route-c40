@@ -1,31 +1,45 @@
 package com.example.e_commerce_route_c40.ui.fragments.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.example.e_commerce_route_c40.base.BaseFragment
+import androidx.fragment.app.viewModels
+import com.example.e_commerce_route_c40.R
+import com.example.e_commerce_route_c40.adapters.HomeCategoriesAdapter
 
 import com.example.e_commerce_route_c40.databinding.FragmentHomeBinding
+import com.example.e_commerce_route_c40.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+@AndroidEntryPoint
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 //  //  private lateinit var offersAdapter: OffersAdapter
-//    private lateinit var adapterCategories: AdapterCategories
+    private lateinit var adapterCategories: HomeCategoriesAdapter
 //    private lateinit var adapterHomeAppliance: AdapterHomeAppliance
 
-    override fun inflateBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    )=FragmentHomeBinding.inflate(inflater,container,false)
+    val _viewModel :HomeViewModel by viewModels()
+
+    override fun initViewModel(): HomeViewModel {
+        return _viewModel
+    }
+
+    override fun getLayoutId(): Int = R.layout.fragment_home
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        onClicks()
+        initViews()
+        observeLiveData()
+        viewModel.getCategoryList()
     }
 
-    private fun onClicks() {
+    private fun observeLiveData() {
+        viewModel.categoriesLiveData.observe(viewLifecycleOwner){categories->
+            adapterCategories.changeData(categories)
+        }
+    }
+
+    private fun initViews() {
+        adapterCategories = HomeCategoriesAdapter()
 //        adapterHomeAppliance.setOncCartClick {
 //            // action add to cart
 //        }
@@ -40,6 +54,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 //            // action to specific category fragment
 //        }
         binding.apply {
+            rvCategories.adapter = adapterCategories
             etSearch.setOnClickListener {
                 // Handle search button click
             }

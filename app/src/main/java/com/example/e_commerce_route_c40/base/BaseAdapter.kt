@@ -36,8 +36,17 @@ abstract class BaseAdapter<TypeItemList, VB : ViewBinding> :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addDataToList(items: MutableList<TypeItemList>) {
-        items.addAll(items)
+    open fun addDataToList(items: List<TypeItemList>) {
+        if(this.items==null){
+            this.items = mutableListOf()
+        }
+        this.items?.addAll(items)
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun changeData(items: List<TypeItemList>) {
+        this.items = items.toMutableList()
         notifyDataSetChanged()
     }
 

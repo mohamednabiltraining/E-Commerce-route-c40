@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/profile"
-            android:textSize="@dimen/_50ssp"
+            android:textSize="50dp"
             android:textColor="@color/main_color" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

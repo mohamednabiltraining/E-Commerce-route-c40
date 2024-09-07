@@ -6,14 +6,9 @@
         <item name="fontFamily">@font/myfont</item>
         <item name="colorPrimaryVariant">@color/main_color</item>
         <item name="colorPrimary">@color/main_color</item>
-        <item name="bottomNavigationStyle">@style/bottom_navigation</item>
 
     </style>
 
     <style name="Theme.ECommerceroutec40" parent="Base.Theme.ECommerceroutec40" />
-
-
-    <style name="bottom_navigation" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-    </style>
 
 </resources>

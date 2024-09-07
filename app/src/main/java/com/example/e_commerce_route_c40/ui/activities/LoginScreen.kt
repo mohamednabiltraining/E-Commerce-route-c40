@@ -10,8 +10,8 @@ import com.example.e_commerce_route_c40.databinding.LoginPageBinding
 
 class LoginScreen : BaseActivity<LoginPageBinding>() {
 
-    override fun inflateBinding(): LoginPageBinding {
-        return LoginPageBinding.inflate(layoutInflater)
+    override fun getLayoutId(): Int {
+        return R.layout.login_page
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

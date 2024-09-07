@@ -1,136 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/iv_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_search"
-        style="@style/inputLayoutStyle"
-        app:layout_constraintStart_toStartOf="@+id/iv_logo"
-        app:layout_constraintTop_toBottomOf="@id/iv_logo">
+    </data>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_search"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="@dimen/_5sdp"
-            android:inputType="text"
-            android:maxLines="1"
-            android:textSize="@dimen/_10ssp"
-            android:hint="@string/search_hint"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <ImageButton
-        android:id="@+id/btn_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:src="@drawable/ic_cart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/til_search"
-        app:layout_constraintTop_toTopOf="@id/til_search" />
-
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:scrollbars="none"
-        android:layout_marginTop="@dimen/_20sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_search"
-        android:layout_height="0dp">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_search"
+            style="@style/inputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@id/btn_cart"
+            app:layout_constraintStart_toStartOf="@+id/iv_logo"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="4dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="12sp"
+                android:hint="@string/search_hint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btn_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_cart"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/til_search"
+            app:layout_constraintTop_toTopOf="@id/til_search" />
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:scrollbars="none"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_search">
 
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_offers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:scrollbars="none"
-                app:spanCount="1"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/item_offers" />
-
-            <TextView
-                android:id="@+id/tv_categories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="@string/categories"
-                android:textColor="@color/main_tv_color"
-                android:textSize="@dimen/_18sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_offers" />
-
-            <TextView
-                android:id="@+id/tv_view_all_categories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="@string/viewAll"
-                android:textColor="@color/main_tv_color"
-                android:textSize="@dimen/_11sdp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_categories"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_categories" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_categories"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:scrollbars="none"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintEnd_toStartOf="@id/tv_categories"
-                app:layout_constraintStart_toEndOf="@id/tv_categories"
-                app:layout_constraintTop_toBottomOf="@id/tv_categories"
-                app:spanCount="2"
-                tools:listitem="@layout/item_category" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_home_appliance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="@string/home_appliance"
-                android:textColor="@color/main_tv_color"
-                android:textSize="@dimen/_18sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_categories" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_home_appliance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:scrollbars="none"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintEnd_toStartOf="@id/tv_home_appliance"
-                app:layout_constraintStart_toEndOf="@id/tv_home_appliance"
-                app:layout_constraintTop_toBottomOf="@id/tv_home_appliance"
-                tools:listitem="@layout/item_home_appliance" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_offers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:scrollbars="none"
+                    app:spanCount="1"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_offers" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tv_categories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/categories"
+                    android:textColor="@color/main_tv_color"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_offers" />
+
+                <TextView
+                    android:id="@+id/tv_view_all_categories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/viewAll"
+                    android:textColor="@color/main_tv_color"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_categories"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_categories" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_categories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:scrollbars="none"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toStartOf="@id/tv_categories"
+                    app:layout_constraintStart_toEndOf="@id/tv_categories"
+                    app:layout_constraintTop_toBottomOf="@id/tv_categories"
+                    app:spanCount="2"
+                    tools:listitem="@layout/item_category" />
+
+                <TextView
+                    android:id="@+id/tv_home_appliance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/home_appliance"
+                    android:textColor="@color/main_tv_color"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_categories" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_home_appliance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:scrollbars="none"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toStartOf="@id/tv_home_appliance"
+                    app:layout_constraintStart_toEndOf="@id/tv_home_appliance"
+                    app:layout_constraintTop_toBottomOf="@id/tv_home_appliance"
+                    tools:listitem="@layout/item_home_appliance" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

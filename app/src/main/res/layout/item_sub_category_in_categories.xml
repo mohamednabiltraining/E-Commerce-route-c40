@@ -8,24 +8,26 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/irv_sub_category_card_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="5dp">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/irv_sub_category_card_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
+            android:background="@drawable/rv_sub_category_background"
             tools:src="@tools:sample/backgrounds/scenic" />
 
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/irv_sub_category_txt"
         style="@style/tv_category_style"
         android:layout_width="match_parent"
         android:fontFamily="@font/myfont"
-        tools:text="@string/egp" />
+        tools:text="@string/app_name" />
 
 </LinearLayout>
-
-

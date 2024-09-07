@@ -2,7 +2,10 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/cv_home_appliance_style">
+    style="@style/cv_home_appliance_style"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,7 +14,7 @@
         <ImageView
             android:id="@+id/iv_product"
             android:layout_width="match_parent"
-            android:layout_height="122dp"
+            android:layout_height="120dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +48,7 @@
             style="@style/tv_review_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginStart="4dp"
             app:layout_constraintBottom_toBottomOf="@id/tv_review"
             app:layout_constraintStart_toEndOf="@id/tv_review"
             app:layout_constraintTop_toTopOf="@id/tv_review"
@@ -55,8 +58,8 @@
             android:id="@+id/rating_star"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
             android:src="@drawable/ic_star"
             app:layout_constraintBottom_toBottomOf="@id/tv_review_count"
             app:layout_constraintStart_toEndOf="@id/tv_review_count"
@@ -85,8 +88,8 @@
             android:id="@+id/btn_add_cart"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginEnd="@dimen/_4sdp"
-            android:layout_marginBottom="@dimen/_4sdp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
             android:adjustViewBounds="true"
             android:background="@color/transparent"
             android:src="@drawable/ic_add"

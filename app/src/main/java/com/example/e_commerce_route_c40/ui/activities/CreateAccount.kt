@@ -2,14 +2,13 @@ package com.example.e_commerce_route_c40.ui.activities
 
 import android.os.Bundle
 import android.widget.Toast
+import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseActivity
 import com.example.e_commerce_route_c40.databinding.CreateAccountActivityBinding
 
 class CreateAccount : BaseActivity<CreateAccountActivityBinding>() {
 
-    override fun inflateBinding(): CreateAccountActivityBinding {
-        return CreateAccountActivityBinding.inflate(layoutInflater)
-    }
+    override fun getLayoutId(): Int = R.layout.create_account_activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
