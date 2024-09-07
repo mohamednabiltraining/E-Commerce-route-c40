@@ -41,7 +41,7 @@ data class ProductDto(
 	val subcategory: List<CategoryDto?>? = null,
 
 	@field:SerializedName("category")
-	val category: Category? = null,
+	val category: CategoryDto? = null,
 
 	@field:SerializedName("brand")
 	val brand: BrandDto? = null,
