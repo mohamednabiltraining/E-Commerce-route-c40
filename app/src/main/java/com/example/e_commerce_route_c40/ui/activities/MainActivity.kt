@@ -6,7 +6,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.databinding.ActivityMainBinding
 import com.example.e_commerce_route_c40.base.BaseActivity
-import com.example.e_commerce_route_c40.base.BaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

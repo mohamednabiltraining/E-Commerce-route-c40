@@ -18,45 +18,45 @@
 
     <!-- text full name -->
     <TextView
-        android:id="@+id/full_name"
+        android:id="@+id/full_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/route_pic"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="sans-serif-medium"
         android:text="full name"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/route_pic" />
 
     <!-- input user full name -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/user_full_name"
+        android:id="@+id/user_full_name_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/full_name"
         android:layout_marginHorizontal="20dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        android:layout_marginTop="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/full_name_text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="enter your full name"
+            android:background="@drawable/shapeinput"
             android:gravity="center_vertical"
-            android:background="@drawable/shapeinput" />
+            android:hint="enter your full name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- text mobile number -->
     <TextView
-        android:id="@+id/mobile_num"
+        android:id="@+id/mobile_num_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/user_full_name"
+        app:layout_constraintTop_toBottomOf="@id/user_full_name_input"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="sans-serif-medium"
         android:text="mobile number"
         android:textColor="@color/white"
@@ -68,9 +68,9 @@
         android:id="@+id/input_user_mobile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mobile_num"
+        app:layout_constraintTop_toBottomOf="@+id/mobile_num_text"
         android:layout_marginHorizontal="20dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
@@ -84,12 +84,12 @@
 
     <!-- text email -->
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/email_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/input_user_mobile"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="sans-serif-medium"
         android:text="email address"
         android:textColor="@color/white"
@@ -101,9 +101,9 @@
         android:id="@+id/input_email_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email_text"
         android:layout_marginHorizontal="20dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
@@ -117,12 +117,12 @@
 
     <!-- text user pass -->
     <TextView
-        android:id="@+id/user_password"
+        android:id="@+id/user_password_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/input_email_address"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="sans-serif-medium"
         android:text="password"
         android:textColor="@color/white"
@@ -134,9 +134,9 @@
         android:id="@+id/input_user_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_password"
+        app:layout_constraintTop_toBottomOf="@+id/user_password_text"
         android:layout_marginHorizontal="20dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
@@ -160,7 +160,7 @@
         android:textColor="@color/main_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="42dp"
         android:layout_marginHorizontal="32dp"
         android:textSize="20sp"
         android:fontFamily="sans-serif-medium"

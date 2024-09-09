@@ -2,13 +2,20 @@ package com.example.e_commerce_route_c40.ui.activities
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.example.e_commerce_route_c40.R
-import com.example.e_commerce_route_c40.base.BaseActivity
-import com.example.e_commerce_route_c40.databinding.CreateAccountActivityBinding
+import com.example.e_commerce_route_c40.base.BaseFragment
+import com.example.e_commerce_route_c40.databinding.CreateAccountFragmentBinding
 
-class CreateAccount : BaseActivity<CreateAccountActivityBinding>() {
+class CreateAccount : BaseFragment<CreateAccountFragmentBinding, CreateAccountViewModel>() {
 
-    override fun getLayoutId(): Int = R.layout.create_account_activity
+    override fun getLayoutId(): Int = R.layout.create_account_fragment
+
+    private val createAccountViewModel: CreateAccountViewModel by viewModels()
+
+    override fun initViewModel(): CreateAccountViewModel {
+        return createAccountViewModel
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,31 +27,30 @@ class CreateAccount : BaseActivity<CreateAccountActivityBinding>() {
 
     private fun signUpToAccount() {
         if (isValidate())
-            Toast.makeText(this, "sign up to account successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "sign up to account successful", Toast.LENGTH_SHORT).show()
     }
 
     private fun isValidate(): Boolean {
 
         var isValid = true
 
-        // Regex patterns
         val usernameRegex = "^[a-zA-Z0-9._]{3,15}$".toRegex()
         val passwordRegex =
             "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{8,}$".toRegex()
         val emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$".toRegex()
         val phoneRegex = "^\\d{11}$".toRegex()
 
-        val userName = binding.userFullName.editText?.text.toString()
+        val userName = binding.userFullNameInput.editText?.text.toString()
         if (userName.isBlank()) {
             isValid = false
-            binding.userFullName.error = "please enter your full name"
-            binding.userFullName.editText?.requestFocus()
+            binding.userFullNameInput.error = "please enter your full name"
+            binding.userFullNameInput.editText?.requestFocus()
         } else if (!userName.matches(usernameRegex)) {
-            binding.userFullName.error =
+            binding.userFullNameInput.error =
                 "Username must be 3-15 characters long and can contain letters, digits, underscores, and periods."
-            binding.userFullName.editText?.requestFocus()
+            binding.userFullNameInput.editText?.requestFocus()
         } else {
-            binding.userFullName.error = null
+            binding.userFullNameInput.error = null
         }
 
         val userPassword = binding.inputUserPass.editText?.text.toString()

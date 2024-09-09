@@ -2,52 +2,68 @@ package com.example.e_commerce_route_c40.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
-import androidx.navigation.findNavController
+import androidx.fragment.app.viewModels
 import com.example.e_commerce_route_c40.R
-import com.example.e_commerce_route_c40.base.BaseActivity
-import com.example.e_commerce_route_c40.databinding.LoginPageBinding
+import com.example.e_commerce_route_c40.base.BaseFragment
+import com.example.e_commerce_route_c40.databinding.FragmentLoginBinding
+import com.example.e_commerce_route_c40.util.hideBottomAppBarViews
 
-class LoginScreen : BaseActivity<LoginPageBinding>() {
+class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
+
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun getLayoutId(): Int {
-        return R.layout.login_page
+        return R.layout.fragment_login
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initViewModel(): LoginViewModel {
+        return loginViewModel
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        hideBottomAppBarViews()
 
         binding.createAcc.setOnClickListener {
             createAccount()
         }
 
         binding.buttonLogin.setOnClickListener {
-           //  logIntoAccount()
-            // we will just navigate directly for test
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            logIntoAccount()
         }
     }
 
     private fun logIntoAccount() {
-        if (isValidate())
-            Toast.makeText(this, "login successfully", Toast.LENGTH_SHORT).show()
+        if (isValidate()) {
+            val email = binding.inputUserName.editText?.text.toString()
+            val password = binding.inputUserPass.editText?.text.toString()
+
+            loginViewModel.getLoginData(email,password)
+
+            loginViewModel.loginLiveData.observe(viewLifecycleOwner){ loginData ->
+                if (loginData != null){
+                    Toast.makeText(activity, "Login successful: Welcome ${loginData.email}", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(activity, "Login failed. Please try again.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun createAccount() {
-        val intent = Intent(this, CreateAccount::class.java)
+        val intent = Intent(activity, CreateAccount::class.java)
         startActivity(intent)
     }
 
     private fun isValidate(): Boolean {
         var isValid = true
 
-        // Regex patterns
         val usernameRegex = "^[a-zA-Z0-9._]{3,15}$".toRegex()
         val passwordRegex =
             "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{8,}$".toRegex()
 
-        // Validate Username
         val username = binding.inputUserName.editText?.text.toString()
         if (username.isBlank()) {
             isValid = false
@@ -62,7 +78,6 @@ class LoginScreen : BaseActivity<LoginPageBinding>() {
             binding.inputUserName.error = null
         }
 
-        // Validate Password
         val password = binding.inputUserPass.editText?.text.toString()
         if (password.isBlank()) {
             isValid = false
