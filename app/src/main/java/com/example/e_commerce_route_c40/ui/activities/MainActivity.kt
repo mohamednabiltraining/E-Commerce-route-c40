@@ -18,13 +18,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         linkNavHostWithBottomNavigation()
-
     }
 
     private fun linkNavHostWithBottomNavigation() {
         val navController = findNavController(R.id.fragmentContainerView)
         binding.bottomNavigation.setupWithNavController(navController)
     }
-
-
 }

@@ -9,7 +9,9 @@ import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseFragment
 import com.example.e_commerce_route_c40.databinding.FragmentLoginBinding
 import com.example.e_commerce_route_c40.util.hideBottomAppBarViews
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
 
     private val loginViewModel: LoginViewModel by viewModels()
