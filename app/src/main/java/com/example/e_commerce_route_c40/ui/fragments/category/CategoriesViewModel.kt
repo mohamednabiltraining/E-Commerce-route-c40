@@ -2,6 +2,7 @@ package com.example.e_commerce_route_c40.ui.fragments.category
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseViewModel
 import com.route.domain.model.Category
 import com.route.domain.model.SubCategory
@@ -21,6 +22,7 @@ class CategoriesViewModel @Inject constructor(
     val subCategoriesLiveData = MutableLiveData<List<SubCategory>?>()
 
     fun getCategories(){
+        showLoading(R.string.loading)
         viewModelScope.launch (Dispatchers.IO){
             try {
                 val categories =  getCategoriesUseCase.invoke()
@@ -29,9 +31,11 @@ class CategoriesViewModel @Inject constructor(
                 handleError(ex)
             }
         }
+        hideLoading()
 
     }
     fun getSubCategories(categoryId:String){
+        showLoading(R.string.loading)
         viewModelScope.launch (Dispatchers.IO){
             try {
                 val subCategories =  getSubCategoriesUseCase.invoke(categoryId)
@@ -40,6 +44,7 @@ class CategoriesViewModel @Inject constructor(
                 handleError(ex)
             }
         }
+        hideLoading()
 
     }
 }
