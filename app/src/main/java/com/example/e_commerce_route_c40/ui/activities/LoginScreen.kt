@@ -3,15 +3,17 @@ package com.example.e_commerce_route_c40.ui.activities
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseFragment
 import com.example.e_commerce_route_c40.databinding.LoginPageBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class LoginScreen : BaseFragment<LoginPageBinding, LoginViewModel>() {
-
-    private val loginViewModel : LoginViewModel by viewModels()
+@AndroidEntryPoint
+class LoginScreen  @Inject constructor(
+    private val loginViewModel: LoginViewModel
+) : BaseFragment<LoginPageBinding, LoginViewModel>() {
 
     override fun getLayoutId(): Int {
         return R.layout.login_page
