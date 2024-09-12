@@ -1,17 +1,24 @@
 package com.example.e_commerce_route_c40.ui.activities
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
-import androidx.navigation.findNavController
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.example.e_commerce_route_c40.R
-import com.example.e_commerce_route_c40.base.BaseActivity
+import com.example.e_commerce_route_c40.base.BaseFragment
 import com.example.e_commerce_route_c40.databinding.LoginPageBinding
 
-class LoginScreen : BaseActivity<LoginPageBinding>() {
+class LoginScreen : BaseFragment<LoginPageBinding, LoginViewModel>() {
+
+    private val loginViewModel : LoginViewModel by viewModels()
 
     override fun getLayoutId(): Int {
         return R.layout.login_page
+    }
+
+    override fun initViewModel(): LoginViewModel {
+        return loginViewModel
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,21 +29,35 @@ class LoginScreen : BaseActivity<LoginPageBinding>() {
         }
 
         binding.buttonLogin.setOnClickListener {
-           //  logIntoAccount()
-            // we will just navigate directly for test
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            logIntoAccount()
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeLiveData()
+    }
+
+    private fun observeLiveData() {
+        loginViewModel.loginLiveData.observe(viewLifecycleOwner) { loginResult ->
+            loginResult?.let {
+                if (loginResult != null) {
+                    Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
     private fun logIntoAccount() {
         if (isValidate())
-            Toast.makeText(this, "login successfully", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "login successfully", Toast.LENGTH_SHORT).show()
     }
 
     private fun createAccount() {
-        val intent = Intent(this, CreateAccount::class.java)
-        startActivity(intent)
+        val action = LoginScreenDirections.actionLoginScreenToHomeFragment()
+        findNavController(this).navigate(action)
     }
 
     private fun isValidate(): Boolean {
@@ -44,22 +65,22 @@ class LoginScreen : BaseActivity<LoginPageBinding>() {
 
         // Regex patterns
         val usernameRegex = "^[a-zA-Z0-9._]{3,15}$".toRegex()
-        val passwordRegex =
-            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{8,}$".toRegex()
+        val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$".toRegex()
+        val passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{8,}$".toRegex()
 
         // Validate Username
-        val username = binding.inputUserName.editText?.text.toString()
+        val username = binding.inputUserNameOrEmail.editText?.text.toString()
         if (username.isBlank()) {
             isValid = false
-            binding.inputUserName.error = "Please enter your name"
-            binding.inputUserName.editText?.requestFocus()
-        } else if (!username.matches(usernameRegex)) {
+            binding.inputUserNameOrEmail.error = "Please enter your name or email"
+            binding.inputUserNameOrEmail.editText?.requestFocus()
+        } else if (!username.matches(usernameRegex) && !username.matches(emailRegex)) {
             isValid = false
-            binding.inputUserName.error =
+            binding.inputUserNameOrEmail.error =
                 "Username must be 3-15 characters long and can contain letters, digits, underscores, and periods."
-            binding.inputUserName.editText?.requestFocus()
+            binding.inputUserNameOrEmail.editText?.requestFocus()
         } else {
-            binding.inputUserName.error = null
+            binding.inputUserNameOrEmail.error = null
         }
 
         // Validate Password

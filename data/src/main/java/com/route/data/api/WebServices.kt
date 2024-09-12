@@ -27,6 +27,6 @@ interface WebServices {
 
     @POST("api/v1/auth/signin")
     suspend fun login(
-        @Body loginRequest: LoginRequest
+        @Body loginResponse: LoginResponse
     ): LoginResponse
 }
