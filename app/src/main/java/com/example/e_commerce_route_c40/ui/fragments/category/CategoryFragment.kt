@@ -1,13 +1,15 @@
 package com.example.e_commerce_route_c40.ui.fragments.category
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseFragment
-import com.example.e_commerce_route_c40.base.BaseViewModel
 import com.example.e_commerce_route_c40.databinding.FragmentCategoryBinding
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -18,6 +20,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding,CategoriesViewMode
     }
 
     private val _viewModel :CategoriesViewModel by viewModels ()
+
     override fun initViewModel(): CategoriesViewModel {
      return _viewModel
     }
@@ -32,19 +35,20 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding,CategoriesViewMode
     private fun observeLivedata() {
         viewModel.categoriesLiveData.observe(viewLifecycleOwner){categories->
             categories?.let {
-                categoriesAdapter.addDataToList(items = it)
+                categoriesAdapter.changeData(categories)
             }
         }
-        viewModel.subCategoriesLiveData.observe(viewLifecycleOwner){
-            subCategories->
+        viewModel.subCategoriesLiveData.observe(viewLifecycleOwner) { subCategories ->
             subCategories?.let {
                 subCategoriesAdapter.changeData(subCategories)
             }
+            updateUiSubCategories()
         }
     }
 
     private val categoriesAdapter = CategoriesAdapter()
     private val subCategoriesAdapter = SubCategoriesAdapter()
+
     private fun initViews() {
         categoriesAdapter.onItemClickListener = CategoriesAdapter.OnItemClickListener { category, position ->
             viewModel.getSubCategories(category?.id ?:"")
@@ -55,5 +59,19 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding,CategoriesViewMode
         }
     }
 
+    private fun updateUiSubCategories() {
+        if (viewModel.subCategoriesLiveData.value.isNullOrEmpty()) {
+            binding.apply {
+                rvSubCategory.visibility = View.GONE
+                layoutPlaceHolder.viewStub?.visibility = View.VISIBLE
+            }
+        } else {
+            binding.apply {
+                rvSubCategory.visibility = View.VISIBLE
+                layoutPlaceHolder.viewStub?.visibility = View.GONE
+            }
 
+        }
+
+    }
 }
