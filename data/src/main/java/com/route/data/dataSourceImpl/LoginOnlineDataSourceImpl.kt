@@ -14,5 +14,4 @@ class LoginOnlineDataSourceImpl @Inject constructor(
         val response = webServices.login(LoginResponse(email))
         return null
     }
-
 }

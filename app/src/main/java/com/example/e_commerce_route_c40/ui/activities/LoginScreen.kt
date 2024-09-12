@@ -36,6 +36,7 @@ class LoginScreen : BaseFragment<LoginPageBinding, LoginViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeLiveData()
+        loginViewModel.GetLogin("","")
     }
 
     private fun observeLiveData() {
