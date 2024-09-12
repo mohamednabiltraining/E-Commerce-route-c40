@@ -33,7 +33,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.activities.LoginScreen"
+            android:name=".ui.activities.LoginFragment"
             android:exported="false" />
 
 

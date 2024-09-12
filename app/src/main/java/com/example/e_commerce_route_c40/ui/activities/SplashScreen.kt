@@ -18,7 +18,7 @@ class SplashScreen : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             // Start the main activity
-            val intent = Intent(this, LoginScreen::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             // Finish the splash activity so it can't be returned to
             finish()

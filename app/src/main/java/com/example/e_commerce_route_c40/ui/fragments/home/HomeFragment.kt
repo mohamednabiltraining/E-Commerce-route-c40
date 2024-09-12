@@ -8,6 +8,7 @@ import com.example.e_commerce_route_c40.adapters.HomeCategoriesAdapter
 
 import com.example.e_commerce_route_c40.databinding.FragmentHomeBinding
 import com.example.e_commerce_route_c40.base.BaseFragment
+import com.example.e_commerce_route_c40.util.showBottomAppBarViews
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -27,6 +28,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showBottomAppBarViews()
         initViews()
         observeLiveData()
         viewModel.getCategoryList()
