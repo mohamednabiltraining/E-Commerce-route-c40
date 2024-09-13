@@ -49,9 +49,7 @@ abstract class BaseAdapter<TypeItemList, VB : ViewBinding>(private val alertDial
     @SuppressLint("NotifyDataSetChanged")
     fun changeData(items: List<TypeItemList>) {
         this.items = items.toMutableList()
-        showProgressDialog(R.string.loading.toString())
         notifyDataSetChanged()
-//        dismissProgressDialog()
     }
 
     fun removeItem(position: Int) {
@@ -68,7 +66,7 @@ abstract class BaseAdapter<TypeItemList, VB : ViewBinding>(private val alertDial
     @SuppressLint("InflateParams")
     open fun showProgressDialog(message: String = "Loading...") {
         alertDialog.apply {
-            setCancelable(false)
+            setCancelable(true)
             setView(LayoutInflater.from(alertDialog.context).inflate(R.layout.loading_dialog_layout,null))
             setMessage(message)
             show()

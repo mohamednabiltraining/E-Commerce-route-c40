@@ -1,7 +1,10 @@
-package com.example.e_commerce_route_c40.ui.fragments.category
+package com.example.e_commerce_route_c40.ui
 
 import android.app.AlertDialog
 import android.content.Context
+import com.example.e_commerce_route_c40.ui.fragments.category.CategoriesAdapter
+import com.example.e_commerce_route_c40.ui.fragments.category.SubCategoriesAdapter
+import com.example.e_commerce_route_c40.ui.fragments.product.ProductsAdaptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,14 +27,22 @@ class Di {
     @FragmentScoped
     fun provideCategoriesAdaptor(
         alertDialog: AlertDialog
-    ):CategoriesAdapter{
+    ): CategoriesAdapter {
         return CategoriesAdapter(alertDialog)
     }
     @Provides
     @FragmentScoped
     fun provideSubCategoriesAdaptor(
         alertDialog: AlertDialog
-    ):SubCategoriesAdapter{
+    ): SubCategoriesAdapter {
         return SubCategoriesAdapter(alertDialog)
+    }
+
+    @Provides
+    @FragmentScoped
+    fun provideProductsAdaptor(
+        alertDialog: AlertDialog
+    ): ProductsAdaptor {
+        return ProductsAdaptor(alertDialog)
     }
 }

@@ -4,6 +4,7 @@ package com.example.e_commerce_route_c40.ui.fragments.category
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseFragment
 import com.example.e_commerce_route_c40.databinding.FragmentCategoryBinding
@@ -53,6 +54,13 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding,CategoriesViewMode
         categoriesAdapter.onItemClickListener = CategoriesAdapter.OnItemClickListener { category, _ ->
             viewModel.getSubCategories(category?.id ?:"")
         }
+
+        subCategoriesAdapter.onItemClickListener =
+            SubCategoriesAdapter.OnItemClickListener { _, _ ->
+                val act = CategoryFragmentDirections.actionCategoryFragmentToProductsFragment()
+                Navigation.findNavController(binding.root).navigate(act)
+            }
+
         binding.apply {
             rvCategory.adapter =categoriesAdapter
             rvSubCategory.adapter = subCategoriesAdapter
@@ -62,13 +70,13 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding,CategoriesViewMode
     private fun updateUiSubCategories() {
         if (viewModel.subCategoriesLiveData.value.isNullOrEmpty()) {
             binding.apply {
-//                rvSubCategory.visibility = View.GONE
-//                layoutPlaceHolder.viewStub?.visibility = View.VISIBLE
+                rvSubCategory.visibility = View.GONE
+                layoutPlaceHolder.viewStub?.visibility = View.VISIBLE
             }
         } else {
             binding.apply {
-//                rvSubCategory.visibility = View.VISIBLE
-//                layoutPlaceHolder.viewStub?.visibility = View.GONE
+                rvSubCategory.visibility = View.VISIBLE
+                layoutPlaceHolder.viewStub?.visibility = View.GONE
             }
 
         }

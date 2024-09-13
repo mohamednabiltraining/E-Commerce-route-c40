@@ -1,6 +1,7 @@
 package com.route.data.repositories
 
 import com.route.domain.repositories.CategoriesRepository
+import com.route.domain.repositories.ProductsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,5 +15,11 @@ abstract class RepositoriesBinder{
     abstract fun bindCategoriesRepo(
         categoriesRepoImpl: CategoriesRepoImpl
     ):CategoriesRepository
+
+
+    @Binds
+    abstract fun bindProductsRepo(
+        productsRepositoryImpl: ProductsRepositoryImpl
+    ): ProductsRepository
 
 }
