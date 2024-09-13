@@ -19,9 +19,8 @@ interface WebServices {
 
     @GET("api/v1/products")
     suspend fun getProducts(
-        @Query("catId") categoryId: String? = null,
+        @Query("category") categoryId: String? = null,
         @Query("brand") brandId: String? = null,
-        @Query("subCatId") subCategoryId: String? = null,
         @Query("keyword") keyword: String? = null,
     ): ProductsResponse
 

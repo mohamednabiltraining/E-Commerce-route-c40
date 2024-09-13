@@ -62,6 +62,7 @@ data class ProductDto(
 			description = description,
 			title = title,
 			ratingsQuantity = ratingsQuantity,
+			ratingsAverage = ratingsAverage,
 			createdAt = createdAt,
 			price = price,
 			id = id,

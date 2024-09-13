@@ -12,6 +12,8 @@ import javax.inject.Inject
 
 class ProductsAdaptor @Inject constructor(alertDialog: AlertDialog) :
     BaseAdapter<Product, ItemProductBinding>(alertDialog) {
+
+
     override fun getBinding(parent: ViewGroup, viewType: Int): ItemProductBinding {
         return ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     }
@@ -23,12 +25,10 @@ class ProductsAdaptor @Inject constructor(alertDialog: AlertDialog) :
             append(" $")
         }
 
-        binding.tvProductReviewValue.text =
-            if (item.ratingsAverage == null) "" else item.ratingsAverage.toString()
+        binding.tvProductReviewValue.text = item.ratingsAverage.toString()
 
         Glide.with(binding.root.context)
             .load(item.imageCover)
-            .centerCrop()
             .into(binding.imgProduct)
     }
 

@@ -18,6 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
+            android:layout_gravity="top"
             app:layout_constraintBottom_toTopOf="@id/rv_product"
             app:layout_constraintEnd_toStartOf="@id/btn_cart"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,5 +59,16 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
             tools:listitem="@layout/item_product" />
+
+        <ViewStub
+            android:id="@+id/layout_place_holder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout="@layout/place_holder_empty_rv"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_search" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

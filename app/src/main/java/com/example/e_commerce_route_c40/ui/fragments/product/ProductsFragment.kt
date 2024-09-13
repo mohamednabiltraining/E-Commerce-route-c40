@@ -34,11 +34,27 @@ class ProductsFragment : BaseFragment<FragmentProductBinding, ProductViewModel>(
             if (products != null) {
                 productsAdaptor.changeData(products)
             }
+            updateUiProducts()
         }
     }
 
     private fun initViews() {
         binding.rvProduct.adapter = productsAdaptor
+    }
+    private fun updateUiProducts() {
+        if (viewModel.productsLiveData.value.isNullOrEmpty()) {
+            binding.apply {
+                rvProduct.visibility = View.INVISIBLE
+                layoutPlaceHolder.viewStub?.visibility = View.VISIBLE
+            }
+        } else {
+            binding.apply {
+                rvProduct.visibility = View.VISIBLE
+                layoutPlaceHolder.viewStub?.visibility = View.GONE
+            }
+
+        }
+
     }
 
 

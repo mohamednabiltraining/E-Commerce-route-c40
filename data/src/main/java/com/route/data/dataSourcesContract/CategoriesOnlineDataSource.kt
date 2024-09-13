@@ -10,7 +10,6 @@ interface CategoriesOnlineDataSource {
     suspend fun getProducts(
         categoryId: String? = null,
         brandId: String? = null,
-        subCategoryId: String? = null,
         keyword: String? = null,
     ): List<Product>?
 

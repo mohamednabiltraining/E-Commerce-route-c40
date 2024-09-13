@@ -1,5 +1,6 @@
 package com.route.data.repositories
 
+import android.util.Log
 import com.route.data.dataSourcesContract.CategoriesOnlineDataSource
 import com.route.domain.model.Product
 import com.route.domain.repositories.ProductsRepository
@@ -11,9 +12,9 @@ class ProductsRepositoryImpl @Inject constructor(
     override suspend fun getProducts(
         categoryId: String?,
         brandId: String?,
-        subCategoryId: String?,
         keyword: String?,
     ): List<Product>? {
-        return onlineDataSource.getProducts()
+        Log.e("ProductsRepositoryImpl categoryId", categoryId.toString())
+        return onlineDataSource.getProducts(categoryId)
     }
 }

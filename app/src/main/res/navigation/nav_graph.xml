@@ -37,5 +37,14 @@
         android:id="@+id/productsFragment"
         android:name="com.example.e_commerce_route_c40.ui.fragments.product.ProductsFragment"
         android:label="ProductsFragment"
-        tools:layout="@layout/fragment_product" />
+        tools:layout="@layout/fragment_product">
+        <argument
+            android:name="subCategory"
+            android:defaultValue="@null"
+            app:argType="com.route.domain.model.SubCategory"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_productsFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
 </navigation>

@@ -1,5 +1,6 @@
 package com.route.data.dataSourceImpl
 
+import android.util.Log
 import com.route.data.api.WebServices
 import com.route.data.dataSourcesContract.CategoriesOnlineDataSource
 import com.route.domain.model.Category
@@ -28,10 +29,10 @@ class CategoriesOnlineDataSourceImpl @Inject constructor(
     override suspend fun getProducts(
         categoryId: String?,
         brandId: String?,
-        subCategoryId: String?,
         keyword: String?,
     ): List<Product>? {
-        val response = webServices.getProducts(categoryId, brandId, subCategoryId, keyword)
+        val response = webServices.getProducts(categoryId, brandId, keyword)
+        Log.e("CategoriesOnlineDataSourceImpl categoryId", categoryId.toString())
         return response.data?.map { ProductDto ->
             ProductDto?.toProduct() ?: Product()
         }

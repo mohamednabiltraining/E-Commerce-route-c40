@@ -56,8 +56,10 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding,CategoriesViewMode
         }
 
         subCategoriesAdapter.onItemClickListener =
-            SubCategoriesAdapter.OnItemClickListener { _, _ ->
-                val act = CategoryFragmentDirections.actionCategoryFragmentToProductsFragment()
+            SubCategoriesAdapter.OnItemClickListener { subCategory, _ ->
+
+                val act =
+                    CategoryFragmentDirections.actionCategoryFragmentToProductsFragment(subCategory)
                 Navigation.findNavController(binding.root).navigate(act)
             }
 
