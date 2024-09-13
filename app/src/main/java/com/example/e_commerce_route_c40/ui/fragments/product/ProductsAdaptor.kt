@@ -3,6 +3,7 @@ package com.example.e_commerce_route_c40.ui.fragments.product
 import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.e_commerce_route_c40.base.BaseAdapter
 import com.example.e_commerce_route_c40.databinding.ItemProductBinding
 import com.route.domain.model.Category
@@ -21,9 +22,14 @@ class ProductsAdaptor @Inject constructor(alertDialog: AlertDialog) :
             append(item.price?.toString())
             append(" $")
         }
+
         binding.tvProductReviewValue.text =
             if (item.ratingsAverage == null) "" else item.ratingsAverage.toString()
 
+        Glide.with(binding.root.context)
+            .load(item.imageCover)
+            .centerCrop()
+            .into(binding.imgProduct)
     }
 
 
