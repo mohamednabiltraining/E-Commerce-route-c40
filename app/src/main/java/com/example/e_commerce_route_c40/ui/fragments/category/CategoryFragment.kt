@@ -1,6 +1,6 @@
 package com.example.e_commerce_route_c40.ui.fragments.category
 
-import android.content.Context
+
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -8,7 +8,6 @@ import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseFragment
 import com.example.e_commerce_route_c40.databinding.FragmentCategoryBinding
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 
@@ -45,12 +44,13 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding,CategoriesViewMode
             updateUiSubCategories()
         }
     }
-
-    private val categoriesAdapter = CategoriesAdapter()
-    private val subCategoriesAdapter = SubCategoriesAdapter()
+    @Inject
+     lateinit var categoriesAdapter:CategoriesAdapter
+    @Inject
+     lateinit var subCategoriesAdapter:SubCategoriesAdapter
 
     private fun initViews() {
-        categoriesAdapter.onItemClickListener = CategoriesAdapter.OnItemClickListener { category, position ->
+        categoriesAdapter.onItemClickListener = CategoriesAdapter.OnItemClickListener { category, _ ->
             viewModel.getSubCategories(category?.id ?:"")
         }
         binding.apply {
@@ -62,13 +62,13 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding,CategoriesViewMode
     private fun updateUiSubCategories() {
         if (viewModel.subCategoriesLiveData.value.isNullOrEmpty()) {
             binding.apply {
-                rvSubCategory.visibility = View.GONE
-                layoutPlaceHolder.viewStub?.visibility = View.VISIBLE
+//                rvSubCategory.visibility = View.GONE
+//                layoutPlaceHolder.viewStub?.visibility = View.VISIBLE
             }
         } else {
             binding.apply {
-                rvSubCategory.visibility = View.VISIBLE
-                layoutPlaceHolder.viewStub?.visibility = View.GONE
+//                rvSubCategory.visibility = View.VISIBLE
+//                layoutPlaceHolder.viewStub?.visibility = View.GONE
             }
 
         }
