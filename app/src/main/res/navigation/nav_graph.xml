@@ -19,9 +19,15 @@
         android:name="com.example.e_commerce_route_c40.ui.fragments.category.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category">
+        <!--        <action-->
+        <!--            android:id="@+id/action_categoryFragment_to_productsFragment"-->
+        <!--            app:destination="@id/productsFragment" />-->
         <action
             android:id="@+id/action_categoryFragment_to_productsFragment"
-            app:destination="@id/productsFragment" />
+            app:destination="@id/productsFragment"
+            app:popUpTo="@id/categoryFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -45,6 +51,9 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_productsFragment_to_categoryFragment"
-            app:destination="@id/categoryFragment" />
+            app:destination="@id/categoryFragment"
+
+            />
+
     </fragment>
 </navigation>
