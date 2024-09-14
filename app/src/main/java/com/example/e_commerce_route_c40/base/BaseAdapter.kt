@@ -64,11 +64,11 @@ abstract class BaseAdapter<TypeItemList, VB : ViewBinding>(private val alertDial
         return
     }
     @SuppressLint("InflateParams")
-    open fun showProgressDialog(message: String = "Loading...") {
+    open fun showProgressDialog() {
         alertDialog.apply {
             setCancelable(true)
             setView(LayoutInflater.from(alertDialog.context).inflate(R.layout.loading_dialog_layout,null))
-            setMessage(message)
+            window?.setBackgroundDrawableResource(R.color.transparent)
             show()
         }
     }
