@@ -68,7 +68,7 @@
 
         <!-- input user name -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_user_name"
+            android:id="@+id/input_user_name_or_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shapeinput"
                 android:gravity="center_vertical"
-                android:hint="enter your name"
+                android:hint="enter your name or email"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,7 +91,7 @@
             android:id="@+id/user_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/input_user_name"
+            app:layout_constraintTop_toBottomOf="@id/input_user_name_or_email"
             android:layout_marginStart="10dp"
             android:layout_marginTop="32dp"
             android:fontFamily="sans-serif-medium"
