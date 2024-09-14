@@ -15,6 +15,6 @@ class ProductsRepositoryImpl @Inject constructor(
         keyword: String?,
     ): List<Product>? {
         Log.e("ProductsRepositoryImpl categoryId", categoryId.toString())
-        return onlineDataSource.getProducts(categoryId)
+        return onlineDataSource.getProducts(categoryId, brandId, keyword)
     }
 }

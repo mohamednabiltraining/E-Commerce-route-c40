@@ -23,7 +23,7 @@ class ProductViewModel @Inject constructor(
     val productsLiveData = MutableLiveData<List<Product>?>()
 
     private val subCategory: SubCategory? = savedStateHandle["subCategory"]
-    fun getProducts() {
+    fun getProductsByCategory() {
         showLoading(R.string.loading)
 //        Log.e("TAg catesdsdasdasdgoryId", subCategory?.id.toString())
 //        Log.e("TAg subCategoryId", subCategory.toString())
@@ -37,5 +37,18 @@ class ProductViewModel @Inject constructor(
         }
         hideLoading()
 
+    }
+
+    fun getProductsByKey(key: String) {
+        showLoading(R.string.loading)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val products = productsUseCase.invoke(keyword = key)
+                productsLiveData.postValue(products)
+            } catch (ex: Exception) {
+                handleError(ex)
+            }
+        }
+        hideLoading()
     }
 }

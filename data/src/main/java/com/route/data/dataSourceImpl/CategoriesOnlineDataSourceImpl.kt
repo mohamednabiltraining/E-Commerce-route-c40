@@ -33,8 +33,8 @@ class CategoriesOnlineDataSourceImpl @Inject constructor(
     ): List<Product>? {
         val response = webServices.getProducts(categoryId, brandId, keyword)
         Log.e("CategoriesOnlineDataSourceImpl categoryId", categoryId.toString())
-        return response.data?.map { ProductDto ->
-            ProductDto?.toProduct() ?: Product()
+        return response.data?.map { productDto ->
+            productDto?.toProduct() ?: Product()
         }
     }
 }
