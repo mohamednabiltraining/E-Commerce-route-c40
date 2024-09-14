@@ -29,4 +29,9 @@
     <string name="your_phone_number">Your Phone Number</string>
     <string name="_6th_october_street11">6th October,street11...</string>
     <string name="your_address">Your Address</string>
+    <string name="enter_your_password">enter your password</string>
+    <string name="enter_your_email">enter your email</string>
+    <string name="please_enter_your_email">Please enter your email</string>
+    <string name="email_format_not_valid">email format not valid</string>
+    <string name="please_enter_valid_password">Please enter valid password</string>
 </resources>

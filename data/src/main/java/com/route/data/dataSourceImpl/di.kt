@@ -1,5 +1,6 @@
 package com.route.data.dataSourceImpl
 
+import com.route.data.dataSourcesContract.AuthOnlineDataSource
 import com.route.data.dataSourcesContract.CategoriesOnlineDataSource
 import dagger.Binds
 import dagger.Module
@@ -15,4 +16,9 @@ abstract class DataSourceBinder{
     abstract fun bindOnlineDataSource(
         categoriesOnlineDataSourceImpl: CategoriesOnlineDataSourceImpl
     ): CategoriesOnlineDataSource
+
+    @Binds
+    abstract fun bindAuthDataSource(
+        datasourceImpl: AuthOnlineDataSourceImpl
+    ): AuthOnlineDataSource
 }

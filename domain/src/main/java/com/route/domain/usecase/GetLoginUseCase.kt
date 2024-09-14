@@ -1,13 +1,15 @@
 package com.route.domain.usecase
 
+import com.route.domain.model.ApiResult
 import com.route.domain.model.LoginData
-import com.route.domain.repositories.LoginRepository
+import com.route.domain.repositories.AuthRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetLoginUseCase @Inject constructor(
-    private val loginRepository: LoginRepository
+    private val loginRepository: AuthRepository
 ) {
-    suspend fun invoke(email: String, password: String): List<LoginData>? {
+    fun invoke(email: String, password: String): Flow<ApiResult<LoginData?>> {
         return loginRepository.login(email, password)
     }
 }

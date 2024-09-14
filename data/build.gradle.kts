@@ -49,10 +49,14 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
 
+    implementation(libs.kotlinx.coroutines.core)
+
     //    hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
 }

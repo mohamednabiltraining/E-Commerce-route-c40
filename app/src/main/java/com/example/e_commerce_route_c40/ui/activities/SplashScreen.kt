@@ -4,25 +4,37 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.e_commerce_route_c40.R
+import com.example.e_commerce_route_c40.base.BaseFragment
+import com.example.e_commerce_route_c40.base.BaseViewModel
 import com.example.e_commerce_route_c40.databinding.SplashBinding
 
-class SplashScreen : AppCompatActivity() {
+class SplashScreen : BaseFragment<SplashBinding,BaseViewModel>() {
+    private val _viewModel:BaseViewModel by viewModels()
+    override fun initViewModel(): BaseViewModel {
+        return BaseViewModel()
+    }
 
-    private lateinit var binding: SplashBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.splash)
-        binding = SplashBinding.inflate(layoutInflater)
+    override fun getLayoutId(): Int {
+        return R.layout.splash
+    }
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            // Start the main activity
-            val intent = Intent(this, LoginScreen::class.java)
-            startActivity(intent)
-            // Finish the splash activity so it can't be returned to
-            finish()
-        }, 1000) // 1000 milliseconds delay (1 seconds)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Handler(Looper.getMainLooper())
+            .postDelayed({
+                navigateToHome()
+            },2000)
+    }
+
+    private fun navigateToHome() {
+        findNavController()
+            .navigate(R.id.action_global_to_login_screen)
     }
 
 }
