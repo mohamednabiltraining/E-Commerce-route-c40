@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_category" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.example.e_commerce_route_c40.ui.fragments.FavoriteFragment"
+        android:name="com.example.e_commerce_route_c40.ui.fragments.favorite.FavoriteFragment"
         android:label="fragment_favorate"
         tools:layout="@layout/fragment_favorate" />
     <fragment

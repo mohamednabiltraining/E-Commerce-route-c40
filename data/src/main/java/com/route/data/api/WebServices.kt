@@ -1,6 +1,7 @@
 package com.route.data.api
 
 import com.route.data.api.model.response.CategoriesResponse
+import com.route.data.api.model.response.ProductDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -20,6 +21,9 @@ interface WebServices {
     suspend fun getProducts(
         @Query("catId")categoryId:String? =null,
     ):CategoriesResponse
+
+    @GET("api/v1/wishlist")
+    suspend fun getWishlist():CategoriesResponse
 
 
 }
