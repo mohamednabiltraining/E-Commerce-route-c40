@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="vm"
+            type="com.example.e_commerce_route_c40.ui.activities.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,22 +70,26 @@
 
         <!-- input user name -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_user_name"
+            android:id="@+id/input_user_name_or_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_name"
             android:layout_marginHorizontal="20dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:showError="@{vm.emailError}"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shapeinput"
                 android:gravity="center_vertical"
-                android:hint="enter your name"
-                android:inputType="text" />
+                android:hint="@string/enter_your_email"
+                android:inputType="text"
+                android:text="@={vm.emailLiveData}"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- text user password -->
@@ -91,7 +97,7 @@
             android:id="@+id/user_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/input_user_name"
+            app:layout_constraintTop_toBottomOf="@id/input_user_name_or_email"
             android:layout_marginStart="10dp"
             android:layout_marginTop="32dp"
             android:fontFamily="sans-serif-medium"
@@ -109,16 +115,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_password"
             android:layout_marginHorizontal="20dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:showError = "@{vm.passwordError}"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="enter your name2"
+                android:hint="@string/enter_your_password"
                 android:gravity="center_vertical"
                 android:background="@drawable/shapeinput"
                 android:drawableEnd="@drawable/ic_visibility"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="@={vm.passwordLiveData}"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- user forget password -->
@@ -139,7 +149,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_login"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             app:layout_constraintTop_toBottomOf="@id/user_forget_password"
             android:text="login"
@@ -150,6 +160,7 @@
             android:layout_marginHorizontal="32dp"
             android:textSize="20sp"
             android:fontFamily="sans-serif-medium"
+            android:onClick="@{()->vm.onLoginClick()}"
             app:cornerRadius="8dp"
             android:backgroundTint="@color/white"
             app:iconGravity="textStart"
@@ -177,7 +188,7 @@
             android:fontFamily="sans-serif-medium"
             android:text="create account"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="@dimen/_18sp"
             app:layout_constraintBottom_toBottomOf="@+id/user_create_acc"
             app:layout_constraintStart_toEndOf="@+id/user_create_acc"
             app:layout_constraintTop_toTopOf="@+id/user_create_acc" />

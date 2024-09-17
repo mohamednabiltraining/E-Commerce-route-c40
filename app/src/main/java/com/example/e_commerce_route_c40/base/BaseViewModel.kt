@@ -3,6 +3,9 @@ package com.example.e_commerce_route_c40.base
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.e_commerce_route_c40.R
+import com.route.domain.cusomException.ConnectionError
+import com.route.domain.cusomException.ServerError
+import com.route.domain.model.ApiResult
 import java.io.IOException
 import java.net.UnknownHostException
 
@@ -12,47 +15,55 @@ open class BaseViewModel:ViewModel() {
 
     fun handleError(throwable:Throwable,
                     posActionCallBack: OnDialogClick?=null){
-//        if(throwable is HttpException){
-//            val errorResponse = throwable.response()?.errorBody()?.string()?.toJson(BaseResponse::class.java)
-//            uiMessage.value = UIMessage(
-//                showLoading = false,
-//                showMessage = true,
-//                message =  errorResponse?.message,
-//                posButtonId = R.string.retry,
-//                onPosClick = posActionCallBack
-//            )
-//            return
-//        }
+        if(throwable is ServerError){
+            uiMessage.postValue(UIMessage(
+                showLoading = false,
+                showMessage = true,
+                message =  throwable.serverMessage,
+                posButtonId = R.string.retry,
+                onPosClick = posActionCallBack
+            ))
+            return
+        }
+
         val message = when(throwable){
-            is UnknownHostException,
-            is IOException ->{
+            is ConnectionError ->{
                 R.string.connection_error
             }
             else->{
                 R.string.somethin_went_wrong
             }
         }
-        uiMessage.value = UIMessage(
+        uiMessage.postValue( UIMessage(
             showLoading = false,
             showMessage = true,
             messageId =  message,
             posButtonId = R.string.retry,
             onPosClick = posActionCallBack
-        )
+        ))
     }
 
     fun hideLoading(){
-        uiMessage.value = UIMessage(
-            showLoading = false
+        uiMessage.postValue(
+            UIMessage(
+            showLoading = false)
         )
     }
     fun showLoading(messageId:Int?=null,
                     message:String?=null){
-        uiMessage.value = UIMessage(
+        uiMessage.postValue(UIMessage(
             showLoading = true,
             messageId = messageId,
             message = message
-        )
+        ))
+    }
+    fun handleLoading(loading:ApiResult.Loading<*>){
+        if(loading.isLoading){
+            showLoading(R.string.loading)
+            return
+        }
+        hideLoading()
+
     }
 
 }
