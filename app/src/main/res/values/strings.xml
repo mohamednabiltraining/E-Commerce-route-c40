@@ -34,4 +34,9 @@
     <string name="please_enter_your_email">Please enter your email</string>
     <string name="email_format_not_valid">email format not valid</string>
     <string name="please_enter_valid_password">Please enter valid password</string>
+    <string name="please_enter_your_password">please enter your password</string>
+    <string name="please_enter_your_name">please enter your name</string>
+    <string name="please_enter_your_mobile_number">please enter your mobile number</string>
+    <string name="please_enter_valid_name">please enter valid name</string>
+    <string name="please_enter_valid_mobile_number">please enter valid mobile number</string>
 </resources>

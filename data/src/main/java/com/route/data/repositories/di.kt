@@ -16,7 +16,7 @@ abstract class RepositoriesBinder{
         categoriesRepoImpl: CategoriesRepoImpl
     ):CategoriesRepository
 
-  @Binds
+    @Binds
     abstract fun bindAuthRepo(
         abstractRepo: AuthRepoImpl
     ):AuthRepository
