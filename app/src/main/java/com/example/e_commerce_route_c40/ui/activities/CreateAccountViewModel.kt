@@ -1,14 +1,25 @@
 package com.example.e_commerce_route_c40.ui.activities
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseViewModel
 import com.example.e_commerce_route_c40.util.ValidationUtils
+import com.route.domain.model.ApiResult
+import com.route.domain.model.SignUpData
+import com.route.domain.usecase.GetSignUpCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CreateAccountViewModel @Inject constructor():BaseViewModel() {
+class CreateAccountViewModel @Inject constructor(
+    private val signUpUseCase: GetSignUpCase
+):BaseViewModel() {
+
+    private val signUpLiveData = MutableLiveData<SignUpData?>()
 
     val emailLiveData = MutableLiveData<String>()
     val passwordLiveData = MutableLiveData<String>()
@@ -31,7 +42,19 @@ class CreateAccountViewModel @Inject constructor():BaseViewModel() {
     }
 
     private fun signUp(email: String, password: String, userName: String, mobileNum: String){
-
+        viewModelScope.launch(Dispatchers.IO) {
+            signUpUseCase.invoke(email, password, userName, mobileNum)
+                .flowOn(Dispatchers.IO)
+                .collect{result->
+                    when(result){
+                        is ApiResult.Failure -> handleError(result.throwable){
+                            signUp(email,password,userName,mobileNum)
+                        }
+                        is ApiResult.Loading -> handleLoading(result)
+                        is ApiResult.Success -> signUpLiveData.postValue(result.data)
+                    }
+                }
+        }
     }
 
     private fun isValidaForm(): Boolean {

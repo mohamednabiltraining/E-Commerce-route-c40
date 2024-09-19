@@ -3,10 +3,13 @@ package com.example.e_commerce_route_c40.ui.activities
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseFragment
 import com.example.e_commerce_route_c40.databinding.FragmentCreateAccountBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CreateAccount : BaseFragment<FragmentCreateAccountBinding, CreateAccountViewModel>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_create_account
@@ -17,15 +20,19 @@ class CreateAccount : BaseFragment<FragmentCreateAccountBinding, CreateAccountVi
         return _viewModel
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.createVM = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
+        onClickSignUp()
+    }
+
+    private fun onClickSignUp() {
+        binding.buttonSignup.setOnClickListener{
+            val action = CreateAccountDirections.actionCreateAccountToLoginScreen()
+            findNavController(this).navigate(action)
+        }
     }
 
 

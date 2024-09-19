@@ -47,11 +47,9 @@ class LoginViewModel @Inject constructor(
                             is ApiResult.Loading ->  handleLoading(result)
                             is ApiResult.Success ->{
                                 loginLiveData.postValue(result.data)
-
                             }
                         }
                     }
-
             }
     }
 

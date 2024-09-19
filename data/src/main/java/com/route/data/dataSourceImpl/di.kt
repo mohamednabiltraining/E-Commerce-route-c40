@@ -2,6 +2,7 @@ package com.route.data.dataSourceImpl
 
 import com.route.data.dataSourcesContract.AuthOnlineDataSource
 import com.route.data.dataSourcesContract.CategoriesOnlineDataSource
+import com.route.data.dataSourcesContract.SignUpOnlineDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -21,4 +22,9 @@ abstract class DataSourceBinder{
     abstract fun bindAuthDataSource(
         datasourceImpl: AuthOnlineDataSourceImpl
     ): AuthOnlineDataSource
+
+    @Binds
+    abstract fun bindSignUpDataSource(
+        signUpDataSourceImpl: SignUpOnlineDataSourceImpl
+    ): SignUpOnlineDataSource
 }
