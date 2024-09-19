@@ -59,6 +59,7 @@
             />
 
     </fragment>
+    <fragment
         android:id="@+id/loginScreen"
         android:name="com.example.e_commerce_route_c40.ui.activities.LoginScreen"
         android:label="LoginScreen" >

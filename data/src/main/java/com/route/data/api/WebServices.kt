@@ -4,6 +4,7 @@ import com.route.data.api.model.response.CategoriesResponse
 
 import com.route.data.api.model.response.LoginRequest
 import com.route.data.api.model.response.LoginResponse
+import com.route.data.api.model.response.ProductsResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
