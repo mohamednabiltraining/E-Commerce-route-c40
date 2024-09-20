@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseFragment
 import com.example.e_commerce_route_c40.databinding.LoginPageBinding
+import com.example.e_commerce_route_c40.util.makeNavyBottomVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,6 +27,7 @@ class LoginScreen : BaseFragment<LoginPageBinding, LoginViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).makeNavyBottomVisible(false)
 
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -35,6 +37,11 @@ class LoginScreen : BaseFragment<LoginPageBinding, LoginViewModel>() {
         }
 
         observeLiveData()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as MainActivity).makeNavyBottomVisible(true)
     }
 
     private fun observeLiveData() {

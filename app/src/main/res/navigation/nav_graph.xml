@@ -62,6 +62,7 @@
     <fragment
         android:id="@+id/loginScreen"
         android:name="com.example.e_commerce_route_c40.ui.activities.LoginScreen"
+        tools:layout="@layout/login_page"
         android:label="LoginScreen" >
         <action
             android:id="@+id/action_loginScreen_to_homeFragment"
@@ -70,5 +71,6 @@
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.example.e_commerce_route_c40.ui.activities.SplashScreen"
+        tools:layout="@layout/splash"
         android:label="SplashScreen" />
 </navigation>
