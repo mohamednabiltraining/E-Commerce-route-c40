@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/selected_view"
+            android:layout_width="8dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/selected_view_visable"
+            android:visibility="gone"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_item_category_in_categories"
+            style="@style/tv_category_style"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/myfont"
+            tools:text="Men's Fashon" />
+    </LinearLayout>
+</layout>

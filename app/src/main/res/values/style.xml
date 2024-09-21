@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="inputLayoutStyle">
+        <item name="boxCornerRadiusTopEnd">20dp</item>
+        <item name="boxCornerRadiusBottomEnd">20dp</item>
+        <item name="boxCornerRadiusTopStart">20dp</item>
+        <item name="boxCornerRadiusBottomStart">20dp</item>
+        <item name="boxStrokeColor">@color/main_color</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1.5dp</item>
+        <item name="android:textColorHint">@color/lite_color</item>
+    </style>
+
+    // item category style
+
+
+    <style name="tv_category_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:lines">2</item>
+        <item name="android:maxLength">30</item>
+        <item name="android:maxWidth">100dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/main_tv_color</item>
+    </style>
+
+    //item home appliance style
+    <style name="cv_home_appliance_style">
+        <item name="cardCornerRadius">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="fontFamily">@font/myfont</item>
+        <item name="strokeColor">#B3C4D2</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="btn_favoriets_style">
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="product_name_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/main_tv_color</item>
+        <item name="fontFamily">@font/myfont</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginStart">7dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="maxLines">1</item>
+        <item name="android:maxLength">26</item>
+    </style>
+
+    <style name="tv_review_style">
+        <item name="android:textColor">@color/main_tv_color</item>
+        <item name="fontFamily">@font/myfont</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="maxLines">1</item>
+        <item name="android:maxLength">26</item>
+    </style>
+
+
+    //item home appliance style
+    <style name="cv_offers_style">
+        <item name="cardCornerRadius">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="fontFamily">@font/myfont</item>
+        <item name="strokeColor">#B3C4D2</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="tittleOutput">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/main_tv_color</item>
+        <item name="font">@font/myfont</item>
+
+    </style>
+
+    <style name="tittleInput">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/main_tv_color</item>
+        <item name="font">@font/myfont</item>
+
+    </style>
+
+    <style name="tittleEmail">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="font">@font/myfont</item>
+
+    </style>
+        
+</resources>

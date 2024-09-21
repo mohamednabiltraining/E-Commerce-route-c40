@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.CategoryFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="category"
-        android:textSize="@dimen/_50ssp"
-        android:textColor="@color/main_color"
-        />
+        android:layout_margin="8dp"
+        android:orientation="horizontal"
+        tools:context=".ui.fragments.category.CategoryFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintWidth_percent="0.25"
+            tools:listitem="@layout/item_category_in_categories" />
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_sub_category"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:listitem="@layout/item_sub_category_in_categories"/>
+
+            <ViewStub
+                android:id="@+id/layout_place_holder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout="@layout/place_holder_empty_rv"
+                android:visibility="gone"
+                />
+    </LinearLayout>
+</layout>
