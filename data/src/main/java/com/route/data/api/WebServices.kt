@@ -3,6 +3,8 @@ package com.route.data.api
 import com.route.data.api.model.response.CategoriesResponse
 import com.route.data.api.model.response.LoginRequest
 import com.route.data.api.model.response.LoginResponse
+import com.route.data.api.model.response.SignUpRequest
+import com.route.data.api.model.response.SignUpResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -27,10 +29,16 @@ interface WebServices {
 
     @POST("api/v1/auth/signin")
     suspend fun login(
-       // @Body body :Map<String,Any>
         @Body loginRequest: LoginRequest
     ): LoginResponse
 
+
+    @POST("api/v1/auth/signup")
+    suspend fun signUp(
+        @Body signUpRequest: SignUpRequest
+    ): SignUpResponse
+
     @GET("api/v1/wishlist")
     suspend fun getWishlist():CategoriesResponse
+
 }

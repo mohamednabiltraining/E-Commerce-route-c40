@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="createVM"
+            type="com.example.e_commerce_route_c40.ui.activities.CreateAccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,6 +47,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/full_name"
             android:layout_marginHorizontal="20dp"
+            app:showError="@{createVM.userNameError}"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -52,7 +55,9 @@
                 android:layout_height="wrap_content"
                 android:hint="enter your full name"
                 android:gravity="center_vertical"
-                android:background="@drawable/shapeinput" />
+                android:background="@drawable/shapeinput"
+                android:text="@={createVM.userNameLiveData}"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- text mobile number -->
@@ -78,6 +83,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mobile_num"
             android:layout_marginHorizontal="20dp"
+            app:showError="@{createVM.mobileNumError}"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -85,7 +91,9 @@
                 android:layout_height="wrap_content"
                 android:hint="enter your mobile no"
                 android:gravity="center_vertical"
-                android:background="@drawable/shapeinput" />
+                android:background="@drawable/shapeinput"
+                android:text="@={createVM.mobileNumLiveData}"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- text email -->
@@ -111,6 +119,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email"
             android:layout_marginHorizontal="20dp"
+            app:showError="@{createVM.emailError}"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -118,7 +127,9 @@
                 android:layout_height="wrap_content"
                 android:hint="enter your email address"
                 android:gravity="center_vertical"
-                android:background="@drawable/shapeinput" />
+                android:background="@drawable/shapeinput"
+                android:text="@={createVM.emailLiveData}"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- text user pass -->
@@ -144,6 +155,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_password"
             android:layout_marginHorizontal="20dp"
+            app:showError="@{createVM.passwordError}"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -152,7 +164,9 @@
                 android:hint="enter your password"
                 android:gravity="center_vertical"
                 android:background="@drawable/shapeinput"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="@={createVM.passwordLiveData}"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- text user login button -->
@@ -173,7 +187,9 @@
             app:cornerRadius="8dp"
             android:backgroundTint="@color/white"
             app:iconGravity="textStart"
-            app:iconPadding="8dp" />
+            app:iconPadding="8dp"
+            android:onClick="@{()->createVM.onSignUpClick()"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

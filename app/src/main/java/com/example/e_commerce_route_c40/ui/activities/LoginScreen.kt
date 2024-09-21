@@ -57,9 +57,8 @@ class LoginScreen : BaseFragment<LoginPageBinding, LoginViewModel>() {
     }
 
     private fun createAccount() {
-        val action = LoginScreenDirections.actionLoginScreenToHomeFragment()
+        val action = LoginScreenDirections.actionLoginScreenToCreateAccount()
         findNavController(this).navigate(action)
     }
-
 
 }

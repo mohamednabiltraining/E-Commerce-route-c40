@@ -10,10 +10,7 @@ import com.route.domain.model.LoginData
 import com.route.domain.usecase.GetLoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -50,11 +47,9 @@ class LoginViewModel @Inject constructor(
                             is ApiResult.Loading ->  handleLoading(result)
                             is ApiResult.Success ->{
                                 loginLiveData.postValue(result.data)
-
                             }
                         }
                     }
-
             }
     }
 
