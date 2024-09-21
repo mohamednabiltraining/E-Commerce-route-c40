@@ -12,12 +12,26 @@
         android:id="@+id/homeFragment"
         android:name="com.example.e_commerce_route_c40.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.example.e_commerce_route_c40.ui.fragments.category.CategoryFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_category">
+        <!--        <action-->
+        <!--            android:id="@+id/action_categoryFragment_to_productsFragment"-->
+        <!--            app:destination="@id/productsFragment" />-->
+        <action
+            android:id="@+id/action_categoryFragment_to_productsFragment"
+            app:destination="@id/productsFragment"
+            app:popUpTo="@id/categoryFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.e_commerce_route_c40.ui.fragments.FavoriteFragment"
@@ -29,8 +43,26 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.e_commerce_route_c40.ui.fragments.product.ProductsFragment"
+        android:label="ProductsFragment"
+        tools:layout="@layout/fragment_product">
+        <argument
+            android:name="subCategory"
+            android:defaultValue="@null"
+            app:argType="com.route.domain.model.SubCategory"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_productsFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment"
+
+            />
+
+    </fragment>
+    <fragment
         android:id="@+id/loginScreen"
         android:name="com.example.e_commerce_route_c40.ui.activities.LoginScreen"
+        tools:layout="@layout/login_page"
         android:label="LoginScreen" >
         <action
             android:id="@+id/action_loginScreen_to_homeFragment"
@@ -42,6 +74,7 @@
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.example.e_commerce_route_c40.ui.activities.SplashScreen"
+        tools:layout="@layout/splash"
         android:label="SplashScreen" />
     <fragment
         android:id="@+id/createAccount"

@@ -1,6 +1,8 @@
 package com.route.data.repositories
 
 import com.route.domain.repositories.CategoriesRepository
+import com.route.domain.repositories.ProductsRepository
+
 import com.route.domain.repositories.AuthRepository
 import com.route.domain.repositories.SignUpRepository
 import dagger.Binds
@@ -16,6 +18,11 @@ abstract class RepositoriesBinder{
     abstract fun bindCategoriesRepo(
         categoriesRepoImpl: CategoriesRepoImpl
     ):CategoriesRepository
+
+    @Binds
+    abstract fun bindProductsRepo(
+        productsRepositoryImpl: ProductsRepositoryImpl
+    ): ProductsRepository
 
     @Binds
     abstract fun bindAuthRepo(
