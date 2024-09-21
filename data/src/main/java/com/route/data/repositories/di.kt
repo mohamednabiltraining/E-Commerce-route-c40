@@ -4,6 +4,7 @@ import com.route.domain.repositories.CategoriesRepository
 import com.route.domain.repositories.ProductsRepository
 
 import com.route.domain.repositories.AuthRepository
+import com.route.domain.repositories.SignUpRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,16 +19,19 @@ abstract class RepositoriesBinder{
         categoriesRepoImpl: CategoriesRepoImpl
     ):CategoriesRepository
 
-
-
     @Binds
     abstract fun bindProductsRepo(
         productsRepositoryImpl: ProductsRepositoryImpl
     ): ProductsRepository
 
-  @Binds
+    @Binds
     abstract fun bindAuthRepo(
         abstractRepo: AuthRepoImpl
     ):AuthRepository
+
+    @Binds
+    abstract fun bindSignUpRepo(
+        signUpRepoImpl: SignUpRepoImpl
+    ): SignUpRepository
 
 }

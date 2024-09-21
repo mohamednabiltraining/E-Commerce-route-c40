@@ -11,5 +11,11 @@ class ValidationUtils {
             val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$".toRegex()
             return email?.matches(emailRegex) ?: false
         }
+        fun isValidMobileNumber(mobileNum:String):Boolean{
+            return  (mobileNum.length) >= 6
+        }
+        fun isValidUserName(username:String):Boolean{
+            return  (username.length) >= 6
+        }
     }
 }

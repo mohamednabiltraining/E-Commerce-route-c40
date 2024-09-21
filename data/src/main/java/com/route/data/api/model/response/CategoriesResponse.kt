@@ -11,5 +11,8 @@ data class CategoriesResponse(
 	val data: List<CategoryDto?>? = null,
 
 	@field:SerializedName("results")
-	val results: Int? = null
+	val results: Int? = null,
+
+	@field:SerializedName("data_product")
+     val data_product: List<ProductDto?>? = null
 )
