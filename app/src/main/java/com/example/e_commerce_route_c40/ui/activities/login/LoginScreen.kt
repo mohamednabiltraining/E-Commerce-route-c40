@@ -1,4 +1,4 @@
-package com.example.e_commerce_route_c40.ui.activities
+package com.example.e_commerce_route_c40.ui.activities.login
 
 import android.os.Bundle
 import android.view.View
@@ -52,7 +52,7 @@ class LoginScreen : BaseFragment<LoginPageBinding, LoginViewModel>() {
 
     private fun navigateToHome() {
         findNavController().navigate(
-            R.id.action_loginScreen_to_homeFragment
+            R.id.action_global_to_home_screen
         )
     }
 

@@ -1,12 +1,19 @@
 package com.route.data.dataSourceImpl
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import com.google.gson.Gson
+import com.route.data.dataStore.UserDataStore
+import com.route.data.dataSourcesContract.AuthOfflineDataSource
 import com.route.data.dataSourcesContract.AuthOnlineDataSource
 import com.route.data.dataSourcesContract.CategoriesOnlineDataSource
-import com.route.data.dataSourcesContract.SignUpOnlineDataSource
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 
 @Module
@@ -19,12 +26,24 @@ abstract class DataSourceBinder{
     ): CategoriesOnlineDataSource
 
     @Binds
-    abstract fun bindAuthDataSource(
+    abstract fun bindAuthOnlineDataSource(
         datasourceImpl: AuthOnlineDataSourceImpl
     ): AuthOnlineDataSource
+}
 
-    @Binds
-    abstract fun bindSignUpDataSource(
-        signUpDataSourceImpl: SignUpOnlineDataSourceImpl
-    ): SignUpOnlineDataSource
+@Module
+@InstallIn(SingletonComponent::class)
+object OfflineDataSourceModule{
+    @Provides
+    @Singleton
+    fun provideAuthOfflineDataSource(
+        @UserDataStore userDataStore: DataStore<Preferences>,
+        gson: Gson
+
+    ): AuthOfflineDataSource{
+        return AuthOfflineDataSourceImpl(
+            userDataStore,
+            gson
+        )
+    }
 }

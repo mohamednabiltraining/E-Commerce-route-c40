@@ -1,6 +1,7 @@
 package com.route.data.api
 
 import android.util.Log
+import com.google.gson.Gson
 import com.route.data.api.interceptor.OkHttpAuthInterceptor
 import com.route.data.api.interceptor.OkHttpCacheInterceptor
 import com.route.data.api.interceptor.OkHttpOfflineCacheInterceptor
@@ -54,6 +55,12 @@ object ApiModule {
     @Singleton
     fun provideGsonConverterFactory():GsonConverterFactory{
         return GsonConverterFactory.create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideGson():Gson{
+        return Gson()
     }
 
     @Provides

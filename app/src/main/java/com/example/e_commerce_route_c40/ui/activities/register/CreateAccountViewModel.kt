@@ -1,4 +1,4 @@
-package com.example.e_commerce_route_c40.ui.activities
+package com.example.e_commerce_route_c40.ui.activities.register
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -6,7 +6,7 @@ import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseViewModel
 import com.example.e_commerce_route_c40.util.ValidationUtils
 import com.route.domain.model.ApiResult
-import com.route.domain.model.SignUpData
+import com.route.domain.model.AuthData
 import com.route.domain.usecase.GetSignUpCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ class CreateAccountViewModel @Inject constructor(
     private val signUpUseCase: GetSignUpCase
 ):BaseViewModel() {
 
-    private val signUpLiveData = MutableLiveData<SignUpData?>()
+    val signUpLiveData = MutableLiveData<AuthData?>()
 
     val emailLiveData = MutableLiveData<String>()
     val passwordLiveData = MutableLiveData<String>()

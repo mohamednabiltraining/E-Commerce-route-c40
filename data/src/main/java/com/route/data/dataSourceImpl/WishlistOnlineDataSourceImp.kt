@@ -14,7 +14,7 @@ class WishlistOnlineDataSourceImp @Inject constructor(
     override fun getWishlist(): Flow<ApiResult<List<Product>?>> {
         return executeApi {
             webServices.getWishlist()
-                .data_product?.map {productDto ->
+                .data?.map {productDto ->
                     productDto?.toProduct() ?: Product()
                 }
         }

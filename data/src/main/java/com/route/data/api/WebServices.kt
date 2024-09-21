@@ -5,6 +5,7 @@ import com.route.data.api.model.response.LoginRequest
 import com.route.data.api.model.response.LoginResponse
 import com.route.data.api.model.response.SignUpRequest
 import com.route.data.api.model.response.SignUpResponse
+import com.route.data.api.model.response.WishListResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -39,6 +40,6 @@ interface WebServices {
     ): SignUpResponse
 
     @GET("api/v1/wishlist")
-    suspend fun getWishlist():CategoriesResponse
+    suspend fun getWishlist():WishListResponse
 
 }

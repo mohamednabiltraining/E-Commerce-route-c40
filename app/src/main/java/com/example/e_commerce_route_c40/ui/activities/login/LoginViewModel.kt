@@ -1,4 +1,4 @@
-package com.example.e_commerce_route_c40.ui.activities
+package com.example.e_commerce_route_c40.ui.activities.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -6,7 +6,7 @@ import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseViewModel
 import com.example.e_commerce_route_c40.util.ValidationUtils
 import com.route.domain.model.ApiResult
-import com.route.domain.model.LoginData
+import com.route.domain.model.AuthData
 import com.route.domain.usecase.GetLoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +25,7 @@ class LoginViewModel @Inject constructor(
     val emailError = MutableLiveData<Int?>()
     val passwordError = MutableLiveData<Int?>()
 
-    val loginLiveData = MutableLiveData<LoginData?>()
+    val loginLiveData = MutableLiveData<AuthData?>()
 
     fun onLoginClick(){
         if(!isValidForm()){

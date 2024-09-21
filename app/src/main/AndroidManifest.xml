@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".ui.activities.CreateAccount"
+            android:name=".ui.activities.register.CreateAccount"
             android:exported="false" />
 
 

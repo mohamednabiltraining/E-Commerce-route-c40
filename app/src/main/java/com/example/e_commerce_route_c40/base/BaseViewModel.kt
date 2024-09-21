@@ -16,6 +16,7 @@ open class BaseViewModel:ViewModel() {
     fun handleError(throwable:Throwable,
                     posActionCallBack: OnDialogClick?=null){
         if(throwable is ServerError){
+
             uiMessage.postValue(UIMessage(
                 showLoading = false,
                 showMessage = true,

@@ -1,15 +1,31 @@
 package com.route.data.api.interceptor
 
+import com.route.data.dataSourcesContract.AuthOfflineDataSource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Response
+import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
-class AuthInterceptor :Interceptor {
+class AuthInterceptor @Inject constructor(
+    private val offlineDataSource: AuthOfflineDataSource,
+    @IODispatcher override val coroutineContext: CoroutineContext
+):Interceptor,CoroutineScope {
 
-    val apiKey = "5909ae28122a471d8b0c237d5989cb73"
-    val AUTH_HEADER = "Authorization"
+
+
+    val AUTH_HEADER = "token"
     override fun intercept(chain: Interceptor.Chain): Response {
         val newBuilder = chain.request().newBuilder()
-        newBuilder.header(AUTH_HEADER,apiKey)
+
+       val token =  runBlocking {
+            offlineDataSource.retrieveUser().first()?.token
+        }
+        token?.let { newBuilder.header(AUTH_HEADER, token) }
+
         return chain.proceed(newBuilder.build())
     }
 }

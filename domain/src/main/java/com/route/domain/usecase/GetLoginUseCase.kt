@@ -1,7 +1,7 @@
 package com.route.domain.usecase
 
 import com.route.domain.model.ApiResult
-import com.route.domain.model.LoginData
+import com.route.domain.model.AuthData
 import com.route.domain.repositories.AuthRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -9,7 +9,7 @@ import javax.inject.Inject
 class GetLoginUseCase @Inject constructor(
     private val loginRepository: AuthRepository
 ) {
-    fun invoke(email: String, password: String): Flow<ApiResult<LoginData?>> {
+    fun invoke(email: String? = null, password: String?=null): Flow<ApiResult<AuthData?>> {
         return loginRepository.login(email, password)
     }
 }

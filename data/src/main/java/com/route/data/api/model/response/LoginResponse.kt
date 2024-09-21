@@ -1,7 +1,7 @@
 package com.route.data.api.model.response
 
 import com.google.gson.annotations.SerializedName
-import com.route.domain.model.LoginData
+import com.route.domain.model.AuthData
 
 data class LoginResponse(
 
@@ -14,8 +14,8 @@ data class LoginResponse(
 	@field:SerializedName("token")
 	val token: String? = null
 ) {
-	fun toLoginData(): LoginData {
-		return LoginData(
+	fun toLoginData(): AuthData {
+		return AuthData(
 			email = user?.email,
 			name = user?.name,
 			token = token

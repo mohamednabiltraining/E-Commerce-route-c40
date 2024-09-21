@@ -1,4 +1,4 @@
-package com.example.e_commerce_route_c40.ui.activities
+package com.example.e_commerce_route_c40.ui.activities.register
 
 import android.os.Bundle
 import android.view.View
@@ -25,14 +25,14 @@ class CreateAccount : BaseFragment<FragmentCreateAccountBinding, CreateAccountVi
         binding.createVM = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        onClickSignUp()
+        viewModel.signUpLiveData.observe(viewLifecycleOwner){
+            navigateToLogin()
+        }
     }
 
-    private fun onClickSignUp() {
-        binding.buttonSignup.setOnClickListener{
-            val action = CreateAccountDirections.actionCreateAccountToLoginScreen()
-            findNavController(this).navigate(action)
-        }
+    private fun navigateToLogin() {
+        val action = CreateAccountDirections.actionCreateAccountToLoginScreen()
+        findNavController(this).navigate(action)
     }
 
 

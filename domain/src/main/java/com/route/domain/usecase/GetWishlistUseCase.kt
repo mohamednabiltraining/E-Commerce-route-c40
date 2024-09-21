@@ -10,7 +10,7 @@ import javax.inject.Inject
 class GetWishlistUseCase @Inject constructor(
     private val wishlistRepository: WishlistRepository
 ) {
-    suspend fun invoke(): Flow<ApiResult<List<Product>?>> {
+    fun invoke(): Flow<ApiResult<List<Product>?>> {
         return wishlistRepository.getWishlist()
     }
 }
