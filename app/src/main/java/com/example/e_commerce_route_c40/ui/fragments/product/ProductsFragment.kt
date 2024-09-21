@@ -38,10 +38,17 @@ class ProductsFragment : BaseFragment<FragmentProductBinding, ProductViewModel>(
             }
             updateUiProducts()
         }
+        viewModel.productWishListUpdatePosition.observe(viewLifecycleOwner){pos->
+            productsAdaptor.notifyItemChanged(pos)
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initViews() {
+        productsAdaptor.onFavoriteClickListener = ProductsAdaptor.OnItemClickListener { product, position ->
+            viewModel.addProductToWishList(product)
+
+        }
         binding.rvProduct.adapter = productsAdaptor
 
         binding.etSearch.setOnEditorActionListener { v, actionId, event ->

@@ -7,7 +7,7 @@ import com.example.e_commerce_route_c40.base.BaseViewModel
 import com.example.e_commerce_route_c40.util.ValidationUtils
 import com.route.domain.model.ApiResult
 import com.route.domain.model.AuthData
-import com.route.domain.usecase.GetSignUpCase
+import com.route.domain.usecase.auth.GetSignUpCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn

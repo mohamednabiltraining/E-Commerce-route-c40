@@ -14,4 +14,8 @@ class WishlistRepoImp @Inject constructor(
     override fun getWishlist(): Flow<ApiResult<List<Product>?>> {
         return onlineDataSource.getWishlist()
     }
+
+    override fun addToWishList(id: String?): Flow<ApiResult<List<String>?>> {
+        return onlineDataSource.addToWishList(id)
+    }
 }

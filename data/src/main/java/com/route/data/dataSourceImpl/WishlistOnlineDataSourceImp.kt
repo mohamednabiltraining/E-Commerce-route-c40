@@ -1,6 +1,7 @@
 package com.route.data.dataSourceImpl
 
 import com.route.data.api.WebServices
+import com.route.data.api.model.request.AddWishListRequest
 import com.route.data.dataSourcesContract.WishlistOnlineDataSource
 import com.route.data.executeApi
 import com.route.domain.model.ApiResult
@@ -18,7 +19,12 @@ class WishlistOnlineDataSourceImp @Inject constructor(
                     productDto?.toProduct() ?: Product()
                 }
         }
+    }
 
+    override fun addToWishList(id: String?): Flow<ApiResult<List<String>?>> {
+        return executeApi {
+            webServices.addToWishList(AddWishListRequest(productId = id)).data
+        }
     }
 
 }

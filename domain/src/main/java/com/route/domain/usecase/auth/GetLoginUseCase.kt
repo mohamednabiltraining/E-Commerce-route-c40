@@ -1,4 +1,4 @@
-package com.route.domain.usecase
+package com.route.domain.usecase.auth
 
 import com.route.domain.model.ApiResult
 import com.route.domain.model.AuthData

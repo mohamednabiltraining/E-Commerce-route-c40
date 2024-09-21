@@ -1,8 +1,11 @@
 package com.route.data.api
 
+import com.route.data.api.model.request.AddWishListRequest
+import com.route.data.api.model.response.BaseResponse
 import com.route.data.api.model.response.CategoriesResponse
 import com.route.data.api.model.response.LoginRequest
 import com.route.data.api.model.response.LoginResponse
+import com.route.data.api.model.response.ProductDto
 import com.route.data.api.model.response.ProductsResponse
 import com.route.data.api.model.response.SignUpRequest
 import com.route.data.api.model.response.SignUpResponse
@@ -44,5 +47,8 @@ interface WebServices {
 
     @GET("api/v1/wishlist")
     suspend fun getWishlist():WishListResponse
+
+    @POST("api/v1/wishlist")
+    suspend fun addToWishList(@Body body:AddWishListRequest):BaseResponse<List<String>?>
 
 }

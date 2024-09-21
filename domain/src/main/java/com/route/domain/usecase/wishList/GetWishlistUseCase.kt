@@ -1,4 +1,4 @@
-package com.route.domain.usecase
+package com.route.domain.usecase.wishList
 
 
 import com.route.domain.model.ApiResult

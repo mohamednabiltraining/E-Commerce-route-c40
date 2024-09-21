@@ -1,4 +1,4 @@
-package com.route.domain.usecase
+package com.route.domain.usecase.product
 
 import android.util.Log
 import com.route.domain.model.ApiResult

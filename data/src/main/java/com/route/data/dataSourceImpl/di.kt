@@ -30,7 +30,6 @@ abstract class DataSourceBinder{
     abstract fun bindAuthOnlineDataSource(
         datasourceImpl: AuthOnlineDataSourceImpl
     ): AuthOnlineDataSource
-}
 
     @Binds
     abstract fun bindProductsDataSource(

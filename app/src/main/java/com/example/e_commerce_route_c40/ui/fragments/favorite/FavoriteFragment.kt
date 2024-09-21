@@ -28,7 +28,7 @@ class FavoriteFragment : BaseFragment<FragmentFavorateBinding,FavoriteViewModel>
         super.onViewCreated(view, savedInstanceState)
 
         adapterProduct = FavoriteProductAdapter()
-
+        binding.revWishList.adapter = adapterProduct
         observeLiveData()
         viewModel.getWishlist()
     }

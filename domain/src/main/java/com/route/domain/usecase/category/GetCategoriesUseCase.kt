@@ -1,4 +1,4 @@
-package com.route.domain.usecase
+package com.route.domain.usecase.category
 
 import com.route.domain.model.Category
 import com.route.domain.model.ApiResult

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseAdapter
 import com.example.e_commerce_route_c40.databinding.ItemProductBinding
 import com.route.domain.model.Category
@@ -30,10 +31,19 @@ class ProductsAdaptor @Inject constructor(alertDialog: AlertDialog) :
         Glide.with(binding.root.context)
             .load(item.imageCover)
             .into(binding.imgProduct)
+        binding.imgFavoriteProduct.apply {
+            setImageResource(
+                if(item.isLiked) R.drawable.ic_favoriets_selectet
+                else R.drawable.ic_favoriets_unselected
+            )
+        }
+        binding.imgFavoriteProduct.setOnClickListener {
+            onFavoriteClickListener?.onItemClick(item,position)
+        }
     }
 
-
+    var onFavoriteClickListener : OnItemClickListener? = null
     fun interface OnItemClickListener {
-        fun onItemClick(category: Category?, position: Int)
+        fun onItemClick(product: Product?, position: Int)
     }
 }
