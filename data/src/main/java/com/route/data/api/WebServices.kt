@@ -30,4 +30,7 @@ interface WebServices {
        // @Body body :Map<String,Any>
         @Body loginRequest: LoginRequest
     ): LoginResponse
+
+    @GET("api/v1/wishlist")
+    suspend fun getWishlist():CategoriesResponse
 }
