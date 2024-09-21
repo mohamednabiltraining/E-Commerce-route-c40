@@ -32,8 +32,13 @@ interface WebServices {
         @Body loginRequest: LoginRequest
     ): LoginResponse
 
+
     @POST("api/v1/auth/signup")
     suspend fun signUp(
         @Body signUpRequest: SignUpRequest
     ): SignUpResponse
+
+    @GET("api/v1/wishlist")
+    suspend fun getWishlist():CategoriesResponse
+
 }

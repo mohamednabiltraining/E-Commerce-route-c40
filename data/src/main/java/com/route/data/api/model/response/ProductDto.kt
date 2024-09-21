@@ -2,6 +2,9 @@ package com.route.data.api.model.response
 
 import com.google.gson.annotations.SerializedName
 
+import com.route.domain.model.Product
+
+
 data class ProductDto(
 
 	@field:SerializedName("sold")
@@ -51,4 +54,23 @@ data class ProductDto(
 
 	@field:SerializedName("updatedAt")
 	val updatedAt: String? = null
-)
+) {
+
+	fun toProduct() : Product{
+		return Product(
+			sold = sold,
+			images = images,
+			quantity = quantity,
+			imageCover = imageCover,
+			description = description,
+			title = title,
+			ratingsQuantity = ratingsQuantity,
+			ratingsAverage = ratingsAverage,
+			createdAt = createdAt,
+			price = price,
+			id = id,
+			slug = slug,
+			updatedAt = updatedAt,
+		)
+	}
+}
