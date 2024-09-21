@@ -1,6 +1,7 @@
 package com.route.data.api.model.response
 
 import com.google.gson.annotations.SerializedName
+import com.route.domain.model.Brand
 
 data class BrandDto(
 
@@ -15,4 +16,13 @@ data class BrandDto(
 
 	@field:SerializedName("slug")
 	val slug: String? = null
-)
+) {
+	fun toBrand(): Brand {
+		return Brand(
+			image = image,
+			name = name,
+			id = id,
+			slug = slug
+		)
+	}
+}

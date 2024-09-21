@@ -45,6 +45,7 @@ class CategoriesViewModel @Inject constructor(
         }
     }
     fun getSubCategories(categoryId:String){
+
         viewModelScope.launch {
             getSubCategoriesUseCase.invoke(categoryId)
                 .collect{result->
@@ -58,6 +59,7 @@ class CategoriesViewModel @Inject constructor(
                     }
                 }
         }
+        hideLoading()
 
     }
 }

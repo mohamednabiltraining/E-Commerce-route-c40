@@ -1,5 +1,6 @@
 package com.example.e_commerce_route_c40.ui.fragments.category
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
@@ -7,9 +8,12 @@ import com.example.e_commerce_route_c40.R
 import com.example.e_commerce_route_c40.base.BaseAdapter
 import com.example.e_commerce_route_c40.databinding.ItemSubCategoryInCategoriesBinding
 import com.route.domain.model.SubCategory
+import javax.inject.Inject
 
-class SubCategoriesAdapter :
-    BaseAdapter<SubCategory, ItemSubCategoryInCategoriesBinding>() {
+class SubCategoriesAdapter @Inject constructor(
+    alertDialog: AlertDialog
+):
+    BaseAdapter<SubCategory, ItemSubCategoryInCategoriesBinding>(alertDialog) {
 
     var onItemClickListener: OnItemClickListener? = null
 

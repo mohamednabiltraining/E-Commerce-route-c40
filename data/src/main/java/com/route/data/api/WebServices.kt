@@ -3,6 +3,7 @@ package com.route.data.api
 import com.route.data.api.model.response.CategoriesResponse
 import com.route.data.api.model.response.LoginRequest
 import com.route.data.api.model.response.LoginResponse
+import com.route.data.api.model.response.ProductsResponse
 import com.route.data.api.model.response.SignUpRequest
 import com.route.data.api.model.response.SignUpResponse
 import com.route.data.api.model.response.WishListResponse
@@ -25,8 +26,10 @@ interface WebServices {
 
     @GET("api/v1/products")
     suspend fun getProducts(
-        @Query("catId")categoryId:String? =null,
-    ):CategoriesResponse
+        @Query("category") categoryId: String? = null,
+        @Query("brand") brandId: String? = null,
+        @Query("keyword") keyword: String? = null,
+    ): ProductsResponse
 
     @POST("api/v1/auth/signin")
     suspend fun login(
