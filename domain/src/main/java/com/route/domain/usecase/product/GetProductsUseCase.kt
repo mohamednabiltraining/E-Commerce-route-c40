@@ -11,7 +11,7 @@ import javax.inject.Inject
 class GetProductsUseCase @Inject constructor(
     private val productsRepository: ProductsRepository
 ) {
-    suspend fun invoke(
+     fun invoke(
         categoryId: String? = null,
         brandId: String? = null,
         keyword: String? = null,

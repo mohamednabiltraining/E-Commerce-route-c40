@@ -43,6 +43,6 @@ class Di {
     fun provideProductsAdaptor(
         alertDialog: AlertDialog
     ): ProductsAdaptor {
-        return ProductsAdaptor(alertDialog)
+        return ProductsAdaptor()
     }
 }

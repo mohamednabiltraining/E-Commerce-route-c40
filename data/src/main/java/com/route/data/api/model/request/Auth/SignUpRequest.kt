@@ -1,4 +1,4 @@
-package com.route.data.api.model.response
+package com.route.data.api.model.request.Auth
 
 import com.google.gson.annotations.SerializedName
 

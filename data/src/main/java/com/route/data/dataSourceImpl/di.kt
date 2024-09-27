@@ -9,6 +9,7 @@ import com.route.data.dataSourcesContract.AuthOnlineDataSource
 import com.route.data.dataSourcesContract.CategoriesOnlineDataSource
 import dagger.Binds
 import com.route.data.dataSourcesContract.ProductsOnlineDataSource
+import com.route.data.dataSourcesContract.WishlistOnlineDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,6 +36,11 @@ abstract class DataSourceBinder{
     abstract fun bindProductsDataSource(
         datasourceImpl: ProductsOnlineDataSourceImpl
     ): ProductsOnlineDataSource
+
+    @Binds
+    abstract fun bindWishListDataSource(
+        wishlistOnlineDataSourceImpl: WishlistOnlineDataSourceImp
+    ): WishlistOnlineDataSource
 }
 
 @Module

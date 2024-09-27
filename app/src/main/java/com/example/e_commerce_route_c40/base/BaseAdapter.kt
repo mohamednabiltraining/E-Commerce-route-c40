@@ -10,8 +10,8 @@ import androidx.viewbinding.ViewBinding
 import com.example.e_commerce_route_c40.R
 
 
-abstract class BaseAdapter<TypeItemList, VB : ViewBinding>(private val alertDialog: AlertDialog) :
-    RecyclerView.Adapter<BaseAdapter<TypeItemList, VB >.ViewHolder>() {
+abstract class BaseAdapter<TypeItemList, VB : ViewBinding>(private val alertDialog: AlertDialog? = null) :
+    RecyclerView.Adapter<BaseAdapter<TypeItemList, VB>.ViewHolder>() {
     private var items: MutableList<TypeItemList>? = null
 
     inner class ViewHolder(val binding: VB) : RecyclerView.ViewHolder(binding.root)
@@ -39,7 +39,7 @@ abstract class BaseAdapter<TypeItemList, VB : ViewBinding>(private val alertDial
 
     @SuppressLint("NotifyDataSetChanged")
     open fun addDataToList(items: List<TypeItemList>) {
-        if(this.items==null){
+        if (this.items == null) {
             this.items = mutableListOf()
         }
         this.items?.addAll(items)
@@ -63,20 +63,27 @@ abstract class BaseAdapter<TypeItemList, VB : ViewBinding>(private val alertDial
             items!!.removeAt(index)
         return
     }
+
     @SuppressLint("InflateParams")
     open fun showProgressDialog() {
-        alertDialog.apply {
-            setCancelable(true)
-            setView(LayoutInflater.from(alertDialog.context).inflate(R.layout.loading_dialog_layout,null))
-            window?.setBackgroundDrawableResource(R.color.transparent)
-            show()
+        alertDialog?.let {
+            alertDialog.apply {
+                setCancelable(true)
+                setView(
+                    LayoutInflater.from(alertDialog.context)
+                        .inflate(R.layout.loading_dialog_layout, null)
+                )
+                window?.setBackgroundDrawableResource(R.color.transparent)
+                show()
+            }
         }
+
+
     }
 
     fun dismissProgressDialog() {
-        alertDialog.dismiss()
+        alertDialog?.dismiss()
     }
-
 
 
 }

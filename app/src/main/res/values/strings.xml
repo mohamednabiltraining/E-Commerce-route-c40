@@ -38,4 +38,8 @@
     <string name="please_enter_your_mobile_number">please enter your mobile number</string>
     <string name="please_enter_valid_name">please enter valid name</string>
     <string name="please_enter_valid_mobile_number">please enter valid mobile number</string>
+    <string name="read_less">read less</string>
+    <string name="total_price">Total Price</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="color">Color</string>
 </resources>

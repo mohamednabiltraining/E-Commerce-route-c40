@@ -1,7 +1,7 @@
 package com.route.data.dataSourceImpl
 
 import com.route.data.api.WebServices
-import com.route.data.api.model.request.AddWishListRequest
+import com.route.data.api.model.request.wishList.AddWishListRequest
 import com.route.data.dataSourcesContract.WishlistOnlineDataSource
 import com.route.data.executeApi
 import com.route.domain.model.ApiResult

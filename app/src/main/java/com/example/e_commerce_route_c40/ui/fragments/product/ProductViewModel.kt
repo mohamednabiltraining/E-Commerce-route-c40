@@ -1,5 +1,6 @@
 package com.example.e_commerce_route_c40.ui.fragments.product
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.example.e_commerce_route_c40.base.BaseViewModel

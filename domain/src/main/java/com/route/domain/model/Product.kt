@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Product(
 	val sold: Int? = null,
-	val images: List<String?>? = null,
+	val images: List<String> ?= null,
 	val quantity: Int? = null,
 	val imageCover: String? = null,
 	val description: String? = null,
@@ -21,5 +21,6 @@ data class Product(
 	val brand: Brand? = null,
 	val slug: String? = null,
 	val updatedAt: String? = null,
+
 	var isLiked:Boolean = false
 ) : Parcelable

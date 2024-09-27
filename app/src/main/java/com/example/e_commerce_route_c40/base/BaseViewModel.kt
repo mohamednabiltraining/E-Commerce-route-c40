@@ -17,13 +17,15 @@ open class BaseViewModel:ViewModel() {
                     posActionCallBack: OnDialogClick?=null){
         if(throwable is ServerError){
 
-            uiMessage.postValue(UIMessage(
+            uiMessage.postValue(
+                UIMessage(
                 showLoading = false,
                 showMessage = true,
                 message =  throwable.serverMessage,
                 posButtonId = R.string.retry,
                 onPosClick = posActionCallBack
-            ))
+            )
+            )
             return
         }
 
