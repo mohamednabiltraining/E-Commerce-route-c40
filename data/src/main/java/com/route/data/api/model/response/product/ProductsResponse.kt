@@ -1,6 +1,7 @@
-package com.route.data.api.model.response
+package com.route.data.api.model.response.product
 
 import com.google.gson.annotations.SerializedName
+import com.route.data.api.model.response.bases.PaginationInfo
 
 data class ProductsResponse(
     @field:SerializedName("metadata")

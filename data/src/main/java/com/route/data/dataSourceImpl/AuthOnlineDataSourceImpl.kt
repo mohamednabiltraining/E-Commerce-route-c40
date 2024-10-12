@@ -1,8 +1,8 @@
 package com.route.data.dataSourceImpl
 
 import com.route.data.api.WebServices
-import com.route.data.api.model.response.LoginRequest
-import com.route.data.api.model.response.SignUpRequest
+import com.route.data.api.model.request.Auth.LoginRequest
+import com.route.data.api.model.request.Auth.SignUpRequest
 import com.route.data.dataSourcesContract.AuthOnlineDataSource
 import com.route.data.executeApi
 import com.route.domain.model.ApiResult

@@ -1,4 +1,4 @@
-package com.route.data.api.model.request
+package com.route.data.api.model.request.wishList
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,6 +1,8 @@
-package com.route.data.api.model.response
+package com.route.data.api.model.response.product
 
 import com.google.gson.annotations.SerializedName
+import com.route.data.api.model.response.bases.BrandDto
+import com.route.data.api.model.response.category.CategoryDto
 import com.route.domain.model.Product
 
 data class ProductDto(
@@ -9,7 +11,7 @@ data class ProductDto(
 	val sold: Int? = null,
 
 	@field:SerializedName("images")
-	val images: List<String?>? = null,
+	val images: List<String>? = null,
 
 	@field:SerializedName("quantity")
 	val quantity: Int? = null,

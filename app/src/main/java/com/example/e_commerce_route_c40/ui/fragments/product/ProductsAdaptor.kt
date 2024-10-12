@@ -11,8 +11,8 @@ import com.route.domain.model.Category
 import com.route.domain.model.Product
 import javax.inject.Inject
 
-class ProductsAdaptor @Inject constructor(alertDialog: AlertDialog) :
-    BaseAdapter<Product, ItemProductBinding>(alertDialog) {
+class ProductsAdaptor :
+    BaseAdapter<Product, ItemProductBinding>() {
 
 
     override fun getBinding(parent: ViewGroup, viewType: Int): ItemProductBinding {
@@ -37,12 +37,18 @@ class ProductsAdaptor @Inject constructor(alertDialog: AlertDialog) :
                 else R.drawable.ic_favoriets_unselected
             )
         }
+        binding.root.setOnClickListener{
+            onItemClickListener?.onItemClick(product = item,position)
+
+        }
         binding.imgFavoriteProduct.setOnClickListener {
             onFavoriteClickListener?.onItemClick(item,position)
         }
     }
 
     var onFavoriteClickListener : OnItemClickListener? = null
+    var onItemClickListener : OnItemClickListener? = null
+
     fun interface OnItemClickListener {
         fun onItemClick(product: Product?, position: Int)
     }

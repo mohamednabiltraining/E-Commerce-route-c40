@@ -11,17 +11,26 @@ import javax.inject.Inject
 class ProductsOnlineDataSourceImpl @Inject constructor(private val webServices: WebServices) :
     ProductsOnlineDataSource {
 
-    override suspend fun getProducts(
+    override  fun getProducts(
         categoryId: String?,
         brandId: String?,
         keyword: String?
     ): Flow<ApiResult<List<Product>?>> {
-
-        val response = webServices.getProducts(categoryId, brandId, keyword)
         return executeApi {
+            val response = webServices.getProducts(categoryId, brandId, keyword)
             response.data?.map { productDto ->
                 productDto?.toProduct() ?: Product()
-            }
+            }}
+
         }
-    }
+
+    override  fun getSpecificProduct(productId: String?):Flow<ApiResult<Product>>  {
+
+            return executeApi {
+                val response =  webServices.getSpecificProduct(productId)
+                response.data?.toProduct()?:Product()
+            }
+            }
+
 }
+

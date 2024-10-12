@@ -24,9 +24,11 @@ fun <T> executeApi(api: suspend () -> T) =
                 val error = Gson().fromJson(serverResponse, ServerErrorResponse::class.java)
                 emit(
                     ApiResult.Failure(
+
                         ServerError(
                             serverMessage = error.message?:
                             error.errors?.msg
+
                             ,
                             statusMsg = error.statusMsg,
                         ),

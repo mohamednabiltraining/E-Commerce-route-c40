@@ -1,4 +1,4 @@
-package com.route.data.api.model.response
+package com.route.data.api.model.response.category
 
 import com.google.gson.annotations.SerializedName
 import com.route.domain.model.Category
